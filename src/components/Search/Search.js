@@ -9,8 +9,8 @@ const getData = (search) => {
 }
 
 const Search = () => {
-    const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
-    // const [search, setSearch] = useState('https://animechan.vercel.app/api/random');
+    //const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
+    const [search, setSearch] = useState('https://animechan.vercel.app/api/random');
     const [webdata, setWebData] = useState('');
     const [status, setStatus] = useState('');
 
