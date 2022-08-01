@@ -6,9 +6,11 @@
 body {
     scroll-behavior: smooth;
     font-family: 'Inter', Arial, sans-serif;
+    background: #f8fdff;
 }
 
-$theme: #FF5666;
+$theme: #011627;
+$black: #333;
 $white: #FFF;
 
 @mixin padding($value) {
@@ -16,4 +18,5 @@ $white: #FFF;
 }
 
 @import "./partials/header";
-@import "./partials/search";
+@import "./partials/feed";
+@import "./partials/status";

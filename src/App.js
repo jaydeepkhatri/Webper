@@ -1,11 +1,11 @@
 import './styles/main.css';
-import {Header, Search} from "./components"
+import {Header, Feed} from "./components"
 
 function App() {
   return (
     <>
       <Header />
-      <Search />
+      <Feed />
     </>
   );
 }

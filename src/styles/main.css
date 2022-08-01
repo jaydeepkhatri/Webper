@@ -8,6 +8,7 @@
 body {
   scroll-behavior: smooth;
   font-family: 'Inter', Arial, sans-serif;
+  background: #f8fdff;
 }
 
 header {
@@ -26,7 +27,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #FF5666;
+  background: #011627;
   color: #FFF;
   padding: 16px;
   -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
@@ -106,5 +107,31 @@ nav .menu-list .menu-item a svg {
   overflow: auto;
   max-height: 1200px;
   white-space: pre-line;
+}
+
+.status {
+  border-radius: 8px;
+  padding: 24px;
+  color: #333;
+}
+
+.status .icon {
+  margin-right: 20px;
+}
+
+.status .icon svg {
+  vertical-align: middle;
+}
+
+.green {
+  background: #e5ffe7;
+}
+
+.orange {
+  background: #ffe4c1;
+}
+
+.red {
+  background: #fffbdb;
 }
 /*# sourceMappingURL=main.css.map */
