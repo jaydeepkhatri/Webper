@@ -1,0 +1,47 @@
+.section {
+    margin: 60px auto;
+    .text {
+        text-align: center;
+        margin-top: 12px;
+        color: rgba(0,0,0,0.3);
+        font-size: 14px;
+    }
+}
+.form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    .input, button {
+        height: 50px;
+        @include padding(2);
+        border-radius: 0;
+        border: 1px solid rgba(0,0,0,0.3);
+    }
+    .input {
+        border-right: 0;
+        width: 100%;
+        max-width: 480px;
+        &:focus, &:active {
+            outline: none;
+        }
+    }
+    button {
+        border-left: 0;
+        background: $white;
+    }
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    margin-top: 60px;
+    .code {
+        overflow: auto;
+        max-height: 1200px;
+        white-space: pre-line;
+    }
+}

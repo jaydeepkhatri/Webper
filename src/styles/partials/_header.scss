@@ -1,0 +1,24 @@
+header {
+    position: sticky;
+    top: 0;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: $theme;
+    color: $white;
+    @include padding(2);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    .menu-list {
+        list-style: none;
+        .menu-item {
+            a {
+                color: $white;
+                svg {
+                    vertical-align: middle;
+                }
+            }
+        }
+    }
+}

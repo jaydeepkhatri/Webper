@@ -1,0 +1,110 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  scroll-behavior: smooth;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #FF5666;
+  color: #FFF;
+  padding: 16px;
+  -webkit-box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+nav .menu-list {
+  list-style: none;
+}
+
+nav .menu-list .menu-item a {
+  color: #FFF;
+}
+
+nav .menu-list .menu-item a svg {
+  vertical-align: middle;
+}
+
+.section {
+  margin: 60px auto;
+}
+
+.section .text {
+  text-align: center;
+  margin-top: 12px;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 14px;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: auto;
+}
+
+.form .input, .form button {
+  height: 50px;
+  padding: 16px;
+  border-radius: 0;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.form .input {
+  border-right: 0;
+  width: 100%;
+  max-width: 480px;
+}
+
+.form .input:focus, .form .input:active {
+  outline: none;
+}
+
+.form button {
+  border-left: 0;
+  background: #FFF;
+}
+
+.content {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+.content .code {
+  overflow: auto;
+  max-height: 1200px;
+  white-space: pre-line;
+}
+/*# sourceMappingURL=main.css.map */

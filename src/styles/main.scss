@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    scroll-behavior: smooth;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+$theme: #FF5666;
+$white: #FFF;
+
+@mixin padding($value) {
+    padding: $value*8px;
+}
+
+@import "./partials/header";
+@import "./partials/search";
