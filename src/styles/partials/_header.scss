@@ -1,6 +1,7 @@
 header {
     position: sticky;
     top: 0;
+    z-index: 10;
 }
 nav {
     display: flex;
@@ -9,7 +10,7 @@ nav {
     background: $theme;
     color: $white;
     @include padding(2);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    // box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     .menu-list {
         list-style: none;
         .menu-item {

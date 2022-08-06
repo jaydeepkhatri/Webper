@@ -1,6 +1,6 @@
 import {FiSearch} from "react-icons/fi";
 import { useEffect, useState } from "react";
-import {Status} from "../index";
+import {Status, ResponseHeaders} from "../index";
 import axios from "axios";
 
 const getData = (search) => {
@@ -9,10 +9,11 @@ const getData = (search) => {
 }
 
 const Search = () => {
+    //testing API without CORS
     //const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
     const [search, setSearch] = useState('http://localhost:3000/');
     const [webdata, setWebData] = useState('');
-    const [status, setStatus] = useState('');
+    const [error, setError] = useState(false);
 
     
 
@@ -20,25 +21,40 @@ const Search = () => {
         axios.get(search)
         .then((data) => {
             console.log(data);
-            setWebData(JSON.stringify(data, null, 2));
-            setStatus(JSON.stringify(data.status));
-            
+            setWebData(data);
         })
-        .catch(error => setWebData(JSON.stringify(error, null, 2)));
-    }, [search, status])
+        .catch(error => {
+            setError(true);
+            setWebData(error);
+        });
+    }, [search])
 
     return (
-        <div className="section">
-            <div className="form">
-                <input type="text" className="input" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="https://facebook.com" />
-                <button type="submit"><FiSearch /></button>
-            </div>
-            <p className="text">Scrap website content..</p>
-            <div className="content">
-                <div className="code">{webdata}</div>
-                <div className="info"><Status status={status} /></div>
-            </div>
-        </div>
+            <div className="section">
+                <div className="inputcontainer">
+                    <div className="form">
+                        <input type="text" className="input" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="https://facebook.com" />
+                        <button type="submit"><FiSearch /></button>
+                    </div>
+                    <p className="text">Scrap website content..</p>
+                </div>
+
+                {
+                    error ? 
+                        <p>Oppsie, We have a error</p>
+                    : <div className="content">
+                        <div className="code">
+                            <div className="title">Server Response</div>
+                            {webdata.data}</div>
+                        <div className="info">
+                            <Status status={webdata.status} statusText={webdata.statusText} />
+                            <ResponseHeaders responseheader={webdata.headers} />
+                        </div>
+                    </div>
+                }
+
+                
+            </div>        
     )
 }
 

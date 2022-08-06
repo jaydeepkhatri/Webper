@@ -1,5 +1,21 @@
 .section {
-    margin: 60px auto;
+    margin: 0 auto;
+    .inputcontainer {
+        padding: 120px 0;
+        position: relative;
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 240px;
+            background: $theme;
+            z-index: -1;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-radius: 0% 100% 50% 50% / 0% 0% 100% 100%;
+        }
+    }
     .text {
         text-align: center;
         margin-top: 12px;
@@ -38,10 +54,18 @@
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
-    margin-top: 60px;
+    background: #fff;
     .code {
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-top: 5px solid rgb(0, 90, 179);
         overflow: auto;
         max-height: 1200px;
         white-space: pre-line;
+        .title {
+            font-size: 20px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 20px;
+        }
     }
 }
