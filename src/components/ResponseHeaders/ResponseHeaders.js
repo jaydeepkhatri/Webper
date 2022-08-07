@@ -3,11 +3,7 @@ const ResponseHeaders = ({responseheader}) => {
         <>
             <div>
                 {
-                    /* console.log(responseheader) */
-                    console.log(typeof responseheader)
-                    /* Object.keys(responseheader['responseheader']).map((name) => (
-                        <p>{name}</p>
-                    )) */
+                    console.log(responseheader)
                 }
             </div>
             

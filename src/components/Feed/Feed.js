@@ -3,16 +3,11 @@ import { useEffect, useState } from "react";
 import {Status, ResponseHeaders} from "../index";
 import axios from "axios";
 
-const getData = (search) => {
-    console.log(search)
-    
-}
-
 const Search = () => {
     //testing API without CORS
     //const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
     const [search, setSearch] = useState('http://localhost:3000/');
-    const [webdata, setWebData] = useState('');
+    const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
 
     
@@ -21,6 +16,7 @@ const Search = () => {
         axios.get(search)
         .then((data) => {
             console.log(data);
+            if(error) setError(false);
             setWebData(data);
         })
         .catch(error => {
