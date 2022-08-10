@@ -121,24 +121,32 @@ nav .menu-list .menu-item a svg {
   background: #fff;
 }
 
-.content .code {
+.content .box {
   padding: 20px;
   border: 1px solid #ddd;
+  margin-bottom: 20px;
   border-top: 5px solid #005ab3;
   overflow: auto;
   max-height: 1200px;
-  white-space: pre-line;
 }
 
-.content .code .title {
+.content .box .title {
   font-size: 20px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
 }
 
+@media (max-width: 600px) {
+  .content {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+}
+
 .status {
   border-radius: 8px;
   padding: 24px;
+  margin-bottom: 20px;
   color: #333;
 }
 

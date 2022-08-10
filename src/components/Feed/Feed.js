@@ -1,12 +1,12 @@
 import {FiSearch} from "react-icons/fi";
 import { useEffect, useState } from "react";
-import {Status, ResponseHeaders} from "../index";
+import {Status, ResponseHeaders, Config} from "../index";
 import axios from "axios";
 
 const Search = () => {
     //testing API without CORS
-    //const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
-    const [search, setSearch] = useState('http://localhost:3000/');
+    const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
+    //const [search, setSearch] = useState('http://localhost:3000/');
     const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
 
@@ -39,12 +39,14 @@ const Search = () => {
                     error ? 
                         <p>Oppsie, We have a error</p>
                     : <div className="content">
-                        <div className="code">
-                            <div className="title">Server Response</div>
-                            {webdata.data}</div>
+                        <div className="box">
+                            <div className="title">Data Response</div>
+                            <pre>{JSON.stringify(webdata.data, null, 2)}</pre>
+                            </div>
                         <div className="info">
                             <Status status={webdata.status} statusText={webdata.statusText} />
                             <ResponseHeaders responseheader={webdata.headers} />
+                            <Config config={webdata.config} />
                         </div>
                     </div>
                 }

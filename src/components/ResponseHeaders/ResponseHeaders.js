@@ -1,10 +1,9 @@
 const ResponseHeaders = ({responseheader}) => {
     return (
         <>
-            <div>
-                {
-                    console.log(responseheader)
-                }
+            <div className="box">
+                    <div className="title">Headers</div>
+                    <pre>{JSON.stringify(responseheader, null, 2)}</pre>
             </div>
             
         </>
