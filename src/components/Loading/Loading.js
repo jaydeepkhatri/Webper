@@ -1,7 +1,9 @@
+import loadingimg from "../../assets/img/loading.png";
+
 const Loading = () => {
     return (
         <div className="loader">
-            <img src="/" />
+            <img src={loadingimg} alt="Loader image" />
             Fetching results...
         </div>
     )

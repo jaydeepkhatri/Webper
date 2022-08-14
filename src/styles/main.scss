@@ -17,6 +17,7 @@ $white: #FFF;
     padding: $value*8px;
 }
 
+@import "./partials/loader";
 @import "./partials/header";
 @import "./partials/feed";
 @import "./partials/status";

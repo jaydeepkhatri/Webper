@@ -5,8 +5,9 @@ import axios from "axios";
 
 const Search = () => {
     //testing API without CORS
-    //const [search, setSearch] = useState('https://animechan.vercel.app/api/random');
-    const [search, setSearch] = useState('http://localhost:3000/');
+    const [search, setSearch] = useState('https://animechan.vercel.app/api/randdom');
+    // const [search, setSearch] = useState('http://localhost:3000/');
+    //const [search, setSearch] = useState('');
     const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +24,7 @@ const Search = () => {
             setWebData(data);
         })
         .catch(error => {
+            console.log(error);
             setError(true);
             setIsLoading(false);
             setWebData(error);
