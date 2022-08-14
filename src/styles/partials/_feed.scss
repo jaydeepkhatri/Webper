@@ -1,20 +1,18 @@
 .section {
     margin: 0 auto;
     .inputcontainer {
-        padding: 120px 0;
-        position: relative;
-        &::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 240px;
-            background: $theme;
-            z-index: -1;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            border-radius: 0% 100% 50% 50% / 0% 0% 100% 100%;
-        }
+        height:200px;
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 40px 0;
+        // background: $theme;
+        margin-bottom: 60px;
+        // clip-path: polygon(0 20%, 100% 0%, 100% 80%, 0% 100%);
+        // position: relative;
+        // top: 0;
+        // z-index: 11;
     }
     .text {
         text-align: center;
@@ -27,7 +25,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: auto;
     .input, button {
         height: 50px;
         @include padding(2);
@@ -59,9 +56,14 @@
         padding: 20px;
         border: 1px solid #ddd;
         margin-bottom: 20px;
-        border-top: 5px solid rgb(0, 90, 179);
+        height: fit-content;
+        border-top: 5px solid $theme;
         overflow: auto;
-        max-height: 1200px;
+        max-height: 800px;
+        box-shadow: 0 4px 8px 8px rgba(0,0,0,0.05);
+        &:hover::-webkit-scrollbar-track {
+            background: rgb(229, 229, 229);
+        }
         .title {
             font-size: 20px;
             border-bottom: 1px solid #ddd;

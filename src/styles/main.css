@@ -11,6 +11,19 @@ body {
   background: #f8fdff;
 }
 
+::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: #FFF;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  border-radius: 8px;
+}
+
 .loader {
   text-align: center;
   display: -webkit-box;
@@ -69,22 +82,19 @@ nav .menu-list .menu-item a svg {
 }
 
 .section .inputcontainer {
-  padding: 120px 0;
-  position: relative;
-}
-
-.section .inputcontainer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 240px;
-  background: #011627;
-  z-index: -1;
-  -webkit-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-          box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-  border-radius: 0% 100% 50% 50% / 0% 0% 100% 100%;
+  height: 200px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 40px 0;
+  margin-bottom: 60px;
 }
 
 .section .text {
@@ -104,7 +114,6 @@ nav .menu-list .menu-item a svg {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin: auto;
 }
 
 .form .input, .form button {
@@ -144,9 +153,18 @@ nav .menu-list .menu-item a svg {
   padding: 20px;
   border: 1px solid #ddd;
   margin-bottom: 20px;
-  border-top: 5px solid #005ab3;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  border-top: 5px solid #011627;
   overflow: auto;
-  max-height: 1200px;
+  max-height: 800px;
+  -webkit-box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
+          box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
+}
+
+.content .box:hover::-webkit-scrollbar-track {
+  background: #e5e5e5;
 }
 
 .content .box .title {

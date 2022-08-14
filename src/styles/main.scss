@@ -1,3 +1,8 @@
+$theme: #011627;
+$black: #333;
+$white: #FFF;
+
+
 * {
     margin: 0;
     padding: 0;
@@ -8,10 +13,18 @@ body {
     font-family: 'Inter', Arial, sans-serif;
     background: #f8fdff;
 }
+::-webkit-scrollbar {
+    width: 0.5em;
+}
+::-webkit-scrollbar-track {
+    background: $white;
+}
+::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    border-radius: 8px;
+}
 
-$theme: #011627;
-$black: #333;
-$white: #FFF;
+
 
 @mixin padding($value) {
     padding: $value*8px;
