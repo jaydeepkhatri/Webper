@@ -1,7 +1,7 @@
 import {FiCheck} from "react-icons/fi";
 
 
-const Status = ({status, statusText}) => {
+const Status = ({status}) => {
 
     let statusClass = status >= 500 ?
                         "pink" : status >= 400 ?
@@ -14,7 +14,7 @@ const Status = ({status, statusText}) => {
         <>
             <div className={`status ${statusClass}`}>
                 <span className="icon"><FiCheck /></span>
-                Status: {status} ({statusText})
+                Status: {status}
             </div>
         </>
     )

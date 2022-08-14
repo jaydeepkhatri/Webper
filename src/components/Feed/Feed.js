@@ -1,26 +1,30 @@
-import {FiSearch} from "react-icons/fi";
+import { FiSearch } from "react-icons/fi";
 import { useEffect, useState } from "react";
-import {Status, ResponseHeaders, Config} from "../index";
+import { Status, ResponseHeaders, Config, Loading } from "../index";
 import axios from "axios";
 
 const Search = () => {
     //testing API without CORS
-    const [search, setSearch] = useState('https://animechan.vercel.app/api/random')
-    //const [search, setSearch] = useState('http://localhost:3000/');
+    //const [search, setSearch] = useState('https://animechan.vercel.app/api/random');
+    const [search, setSearch] = useState('http://localhost:3000/');
     const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
 
     
 
     useEffect(() => {
+        setIsLoading(true);
         axios.get(search)
         .then((data) => {
             console.log(data);
             if(error) setError(false);
+            setIsLoading(false);
             setWebData(data);
         })
         .catch(error => {
             setError(true);
+            setIsLoading(false);
             setWebData(error);
         });
     }, [search])
@@ -36,6 +40,7 @@ const Search = () => {
                 </div>
 
                 {
+                    isLoading ? <Loading /> :
                     error ? 
                         <p>Oppsie, We have a error</p>
                     : <div className="content">
@@ -44,14 +49,12 @@ const Search = () => {
                             <pre>{JSON.stringify(webdata.data, null, 2)}</pre>
                             </div>
                         <div className="info">
-                            <Status status={webdata.status} statusText={webdata.statusText} />
+                            <Status status={webdata.status}/>
                             <ResponseHeaders responseheader={webdata.headers} />
                             <Config config={webdata.config} />
                         </div>
                     </div>
-                }
-
-                
+                }                
             </div>        
     )
 }
