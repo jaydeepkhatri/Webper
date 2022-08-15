@@ -138,6 +138,41 @@ nav .menu-list .menu-item a svg {
   background: #FFF;
 }
 
+.buttons {
+  position: absolute;
+  top: 80px;
+  right: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 12px;
+  pointer-events: none;
+  opacity: 0;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+
+.buttons button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+  height: 32px;
+  width: 32px;
+  background: #FFF;
+  color: #333;
+  border: 1px solid rgba(51, 51, 51, 0.3);
+  -webkit-box-shadow: 0 4px 4px rgba(51, 51, 51, 0.1);
+          box-shadow: 0 4px 4px rgba(51, 51, 51, 0.1);
+}
+
 .content {
   display: -ms-grid;
   display: grid;
@@ -164,8 +199,13 @@ nav .menu-list .menu-item a svg {
   position: relative;
 }
 
-.content .box:hover::-webkit-scrollbar-track {
+.content .box:hover ::-webkit-scrollbar-track {
   background: #e5e5e5;
+}
+
+.content .box:hover .buttons {
+  pointer-events: all;
+  opacity: 1;
 }
 
 .content .box .title {
@@ -174,33 +214,7 @@ nav .menu-list .menu-item a svg {
   margin-bottom: 20px;
 }
 
-.content .box .buttons {
-  position: absolute;
-  top: 80px;
-  right: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 12px;
-}
-
-.content .box .buttons button {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  height: 32px;
-  width: 32px;
-  background: #FFF;
-  color: #333;
-  border: 1px solid rgba(51, 51, 51, 0.3);
-}
-
+/*Media Queries*/
 @media (max-width: 600px) {
   .content {
     -ms-grid-columns: 1fr;

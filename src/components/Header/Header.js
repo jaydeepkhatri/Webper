@@ -6,7 +6,7 @@ const Header = () => {
             <nav>
                 <h2>Webper.</h2>
                 <ul className="menu-list">
-                    <li className="menu-item"><a href="https://github.com/jaydeepkhatri/webper" target="_blank"><FiGithub /></a></li>
+                    <li className="menu-item"><a href="https://github.com/jaydeepkhatri/webper" target="_blank" rel="noreferrer"><FiGithub /></a></li>
                 </ul>
             </nav>
         </header>

@@ -31,7 +31,7 @@ const Search = () => {
             setIsLoading(false);
             setWebData(error);
         });
-    }, [search])
+    }, [search, error])
 
     return (
             <div className="section">
