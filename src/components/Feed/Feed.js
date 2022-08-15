@@ -1,4 +1,5 @@
 import { FiSearch } from "react-icons/fi";
+import { RiFileCopyLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { Status, ResponseHeaders, Config, Loading } from "../index";
 import backgroundImg from "../../assets/img/background.jpg";
@@ -49,6 +50,9 @@ const Search = () => {
                                 <div className="box">
                                     <div className="title">Oppsie, We have a error..</div>
                                     <pre>{JSON.stringify(webdata.response.data, null, 2)}</pre>
+                                    <div className="buttons">
+                                        <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.response.data))}><RiFileCopyLine /></button>
+                                    </div>
                                 </div>
                                 <div className="info">
                                     <Status status={webdata.response.status} />
@@ -62,6 +66,9 @@ const Search = () => {
                         <div className="box">
                             <div className="title">Data Response</div>
                             <pre>{JSON.stringify(webdata.data, null, 2)}</pre>
+                            <div className="buttons">
+                                <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}><RiFileCopyLine /></button>
+                            </div>
                             </div>
                         <div className="info">
                             <Status status={webdata.status}/>

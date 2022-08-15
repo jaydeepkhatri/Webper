@@ -61,6 +61,7 @@
         overflow: auto;
         max-height: 800px;
         box-shadow: 0 4px 8px 8px rgba(0,0,0,0.05);
+        position: relative;
         &:hover::-webkit-scrollbar-track {
             background: rgb(229, 229, 229);
         }
@@ -68,6 +69,23 @@
             font-size: 20px;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+        }
+        .buttons {
+            position: absolute;
+            top: 80px;
+            right: 40px;
+            display: flex;
+            gap: 12px;
+            button {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: 32px;
+                width: 32px;
+                background: $white;
+                color: $black;
+                border: 1px solid rgba($black, 0.3);
+            }
         }
     }
 }
