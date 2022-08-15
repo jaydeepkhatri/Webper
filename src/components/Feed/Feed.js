@@ -39,7 +39,6 @@ const Search = () => {
                         <input type="text" className="input" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="https://facebook.com" />
                         <button type="submit"><FiSearch /></button>
                     </div>
-                    <p className="text">Scrap website content..</p>
                 </div>
 
                 {

@@ -57,7 +57,7 @@
         border: 1px solid #ddd;
         margin-bottom: 20px;
         height: fit-content;
-        border-top: 5px solid $theme;
+        border-top: 5px solid rgba($theme, 0.5);
         overflow: auto;
         max-height: 800px;
         box-shadow: 0 4px 8px 8px rgba(0,0,0,0.05);

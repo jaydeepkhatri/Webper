@@ -156,7 +156,7 @@ nav .menu-list .menu-item a svg {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  border-top: 5px solid #011627;
+  border-top: 5px solid rgba(1, 22, 39, 0.5);
   overflow: auto;
   max-height: 800px;
   -webkit-box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
