@@ -60,7 +60,7 @@ nav {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  background: #011627;
+  background: #040506;
   color: #FFF;
   padding: 16px;
 }
@@ -93,7 +93,8 @@ nav .menu-list .menu-item a svg {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 40px 0;
+  padding: 40px 20px;
+  background: #040506;
   margin-bottom: 60px;
 }
 
@@ -167,10 +168,10 @@ nav .menu-list .menu-item a svg {
   height: 32px;
   width: 32px;
   background: #FFF;
-  color: #333;
-  border: 1px solid rgba(51, 51, 51, 0.3);
-  -webkit-box-shadow: 0 4px 4px rgba(51, 51, 51, 0.1);
-          box-shadow: 0 4px 4px rgba(51, 51, 51, 0.1);
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .content {
@@ -191,7 +192,7 @@ nav .menu-list .menu-item a svg {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  border-top: 5px solid rgba(1, 22, 39, 0.5);
+  border-top: 5px solid rgba(4, 5, 6, 0.5);
   overflow: auto;
   max-height: 800px;
   -webkit-box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
@@ -214,9 +215,15 @@ nav .menu-list .menu-item a svg {
   margin-bottom: 20px;
 }
 
+.content .box pre {
+  display: contents;
+  white-space: pre-wrap;
+}
+
 /*Media Queries*/
-@media (max-width: 600px) {
+@media (max-width: 992px) {
   .content {
+    padding: 20px;
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
   }
@@ -226,7 +233,7 @@ nav .menu-list .menu-item a svg {
   border-radius: 8px;
   padding: 24px;
   margin-bottom: 20px;
-  color: #333;
+  color: #000;
 }
 
 .status .icon {

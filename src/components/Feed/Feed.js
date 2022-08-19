@@ -2,13 +2,12 @@ import { FiSearch } from "react-icons/fi";
 import { RiFileCopyLine } from "react-icons/ri";
 import { useEffect, useState } from "react";
 import { Status, ResponseHeaders, Config, Loading } from "../index";
-import backgroundImg from "../../assets/img/background.jpg";
 import axios from "axios";
 
 const Search = () => {
     //testing API without CORS
     //const [search, setSearch] = useState('https://jaydeepkhatri.me');
-    const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos');
+    const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
     //const [search, setSearch] = useState('http://localhost:3000/');
     //const [search, setSearch] = useState('');
     const [webdata, setWebData] = useState({});
@@ -36,7 +35,7 @@ const Search = () => {
 
     return (
             <div className="section">
-                <div className="inputcontainer" style={{backgroundImage: `url(${backgroundImg})`}}>
+                <div className="inputcontainer" >
                     <div className="form">
                         <input type="text" className="input" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="https://facebook.com" />
                         <button type="submit"><FiSearch /></button>
