@@ -20,13 +20,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    .input, button {
+    .search-input, button {
         height: 50px;
         @include padding(2);
         border-radius: 0;
         border: 1px solid rgba(0,0,0,0.3);
     }
-    .input {
+    .search-input {
         border-right: 0;
         width: 100%;
         max-width: 480px;
@@ -100,6 +100,15 @@
             display: contents;
             white-space: pre-wrap;
         }
+    }
+}
+.content.error {
+    grid-template-columns: 1fr;
+    .box {
+        border-top: 5px solid rgb(234, 70, 0);
+        max-width: 600px;
+        width: 100%;
+        margin: auto;
     }
 }
 

@@ -5,17 +5,23 @@
     color: $black;
     .icon {
         margin-right: 20px;
-        svg {
-            vertical-align: middle;
+    }
+    .statusinfo {
+        margin-bottom: 8px;
+        &:last-child {
+            margin: 0;
         }
     }
 }
 .green {
     background: rgb(229, 255, 231);
 }
-.orange {
-    background: rgb(255, 228, 193);
+.yellow {
+    background: rgb(255, 255, 193);
 }
 .red {
-    background: rgb(255, 251, 219);
+    background: rgb(255, 231, 219);
+}
+.pink {
+    background: rgb(251, 213, 250);
 }

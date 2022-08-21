@@ -122,20 +122,20 @@ nav .menu-list .menu-item a svg {
           justify-content: center;
 }
 
-.form .input, .form button {
+.form .search-input, .form button {
   height: 50px;
   padding: 16px;
   border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
 
-.form .input {
+.form .search-input {
   border-right: 0;
   width: 100%;
   max-width: 480px;
 }
 
-.form .input:focus, .form .input:active {
+.form .search-input:focus, .form .search-input:active {
   outline: none;
 }
 
@@ -225,6 +225,18 @@ nav .menu-list .menu-item a svg {
   white-space: pre-wrap;
 }
 
+.content.error {
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+}
+
+.content.error .box {
+  border-top: 5px solid #ea4600;
+  max-width: 600px;
+  width: 100%;
+  margin: auto;
+}
+
 /*Media Queries*/
 @media (max-width: 992px) {
   .content {
@@ -245,19 +257,27 @@ nav .menu-list .menu-item a svg {
   margin-right: 20px;
 }
 
-.status .icon svg {
-  vertical-align: middle;
+.status .statusinfo {
+  margin-bottom: 8px;
+}
+
+.status .statusinfo:last-child {
+  margin: 0;
 }
 
 .green {
   background: #e5ffe7;
 }
 
-.orange {
-  background: #ffe4c1;
+.yellow {
+  background: #ffffc1;
 }
 
 .red {
-  background: #fffbdb;
+  background: #ffe7db;
+}
+
+.pink {
+  background: #fbd5fa;
 }
 /*# sourceMappingURL=main.css.map */
