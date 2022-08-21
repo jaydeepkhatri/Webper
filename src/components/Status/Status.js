@@ -1,7 +1,7 @@
 import {FiCheck} from "react-icons/fi";
 
 
-const Status = ({status, time}) => {
+const Status = ({status, time, url}) => {
 
     let statusClass = status >= 500 ?
                         "pink" : status >= 400 ?
@@ -15,6 +15,7 @@ const Status = ({status, time}) => {
             <div className={`status ${statusClass}`}>
                 <p className="statusinfo">Status: <strong>{status}</strong></p>
                 <p className="statusinfo">Time: <strong>{time}ms</strong></p>
+                <p className="statusinfo">URL: <strong>{url}</strong></p>
 
             </div>
         </>

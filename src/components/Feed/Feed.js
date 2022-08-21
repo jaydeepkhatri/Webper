@@ -7,8 +7,7 @@ import axios from "axios";
 
 const Search = () => {
     //testing API without CORS
-    const [search, setSearch] = useState('https://jaydeepkhatri.me');
-    //const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
+    const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
     //const [search, setSearch] = useState('http://localhost:3000/');
     //const [search, setSearch] = useState('');
     const [webdata, setWebData] = useState({});
@@ -20,32 +19,39 @@ const Search = () => {
     let timer = 0;
 
     const fetchAPI = () => {
-        setIsLoading(true);
-        //setSearch(document.querySelector(".search-input").value);
-        // onChange={(e) => setSearch(e.target.value)}
+        
 
-        if(error) setError(false);
-        axios({
-            method: 'get',
-            url: search,
-            validateStatus: function (status) {
-                return true;
-            }
-        }).then((data) => {
-                console.log(data);
-                setIsLoading(false);
-                setWebData(data);
-                setIsLoadingComplete(true);
-                let date = new Date();
-                setTimeToLoad(date.getTime() - timer)
-            })
-            .catch(error => {
-                console.log(error);
-                setError(true);
-                setIsLoading(false);
-                setWebData(error);
-                setIsLoadingComplete(true);
-            });
+        if(search.length != 0) {
+            setIsLoading(true);
+            if(error) setError(false);
+
+
+            axios({
+                method: 'get',
+                url: search,
+                validateStatus: function (status) {
+                    return true;
+                }
+            }).then((data) => {
+                    console.log(data);
+                    setIsLoading(false);
+                    setWebData(data);
+                    setIsLoadingComplete(true);
+                    let date = new Date();
+                    setTimeToLoad(date.getTime() - timer)
+                })
+                .catch(error => {
+                    console.log(error);
+                    setError(true);
+                    setIsLoading(false);
+                    setWebData(error);
+                    let date = new Date();
+                    setTimeToLoad(date.getTime() - timer)
+                    setIsLoadingComplete(true);
+                });
+        } 
+
+        
     }
     
 
@@ -54,7 +60,7 @@ const Search = () => {
                 <div className="inputcontainer" >
 
                     <div className="form">
-                        <input type="text" className="search-input" onChange={(e) => {setIsLoadingComplete(false); setSearch(e.target.value)}} value={search} placeholder="https://facebook.com" />
+                        <input type="text" className="search-input" onChange={(e) => {setIsLoadingComplete(false); setSearch(e.target.value)}} value={search} placeholder="Enter URL" />
                         <button type="submit" onClick={() => {let date = new Date(); timer = date.getTime(); console.log(date.getTime()); fetchAPI();}}><FiSearch /></button>
                     </div>
                 </div>
@@ -67,7 +73,8 @@ const Search = () => {
                                 <div className="box">
                                     <div className="title"><MdOutlineError /> We have a error</div>
                                     <p>Couldn't fetch the <em>{search}</em></p><br/>
-                                    <p>Error Code: <strong>{webdata.code}</strong></p>
+                                    <p>Error Code: <strong>{webdata.code}</strong></p><br/>
+                                    <p>Time: <strong>{timeToLoad}ms</strong></p>
                                 </div>
                             </div>
                         </>
@@ -80,7 +87,7 @@ const Search = () => {
                             </div>
                             </div>
                         <div className="info">
-                            <Status status={webdata.status} time={timeToLoad}/>
+                            <Status status={webdata.status} time={timeToLoad} url={search} />
                             <ResponseHeaders responseheader={webdata.headers} />
                             <Config config={webdata.config} />
                         </div>
