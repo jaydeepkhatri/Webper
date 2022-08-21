@@ -15,6 +15,7 @@ body {
 }
 ::-webkit-scrollbar {
     width: 0.5em;
+    height: 0.5em;
 }
 ::-webkit-scrollbar-track {
     background: $white;
@@ -23,7 +24,9 @@ body {
     background-color: darkgrey;
     border-radius: 8px;
 }
-
+.text-center {
+    text-align: center;
+}
 
 
 @mixin padding($value) {

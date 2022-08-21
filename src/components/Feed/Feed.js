@@ -13,37 +13,41 @@ const Search = () => {
     const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [isLoadingComplete, setIsLoadingComplete] = useState(false);
 
-    
-
-    useEffect(() => {
+    const fetchAPI = () => {
         setIsLoading(true);
-        axios.get(search)
-        .then((data) => {
-            //console.log(data);
-            if(error) setError(false);
-            setIsLoading(false);
-            setWebData(data);
-        })
-        .catch(error => {
-            //console.log(error);
-            setError(true);
-            setIsLoading(false);
-            setWebData(error);
-        });
-    }, [search, error])
+        axios({
+            method: 'get',
+            url: search
+        }).then((data) => {
+                console.log(data);
+                if(error) setError(false);
+                setIsLoading(false);
+                setWebData(data);
+                setIsLoadingComplete(true);
+            })
+            .catch(error => {
+                console.log(error);
+                setError(true);
+                setIsLoading(false);
+                setWebData(error);
+                setIsLoadingComplete(true);
+            });
+    }
+    
 
     return (
             <div className="section">
                 <div className="inputcontainer" >
                     <div className="form">
                         <input type="text" className="input" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="https://facebook.com" />
-                        <button type="submit"><FiSearch /></button>
+                        <button type="submit" onClick={() => fetchAPI()}><FiSearch /></button>
                     </div>
                 </div>
 
                 {
-                    isLoading ? <Loading /> :
+                    isLoading ? <Loading /> : isLoadingComplete ? (
                     error ? 
                         <>
                             <div className="content">
@@ -66,7 +70,7 @@ const Search = () => {
                     : <div className="content">
                         <div className="box">
                             <div className="title">Data Response</div>
-                            <pre>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</pre>
+                            <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
                             <div className="buttons">
                                 <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}><RiFileCopyLine /></button>
                             </div>
@@ -77,6 +81,7 @@ const Search = () => {
                             <Config config={webdata.config} />
                         </div>
                     </div>
+                    ) : <p className="text-center">Click the search <FiSearch /> to fetch.</p>
                 }                
             </div>        
     )
