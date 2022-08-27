@@ -72,9 +72,9 @@ const Search = () => {
                             <div className="content error">
                                 <div className="box">
                                     <div className="title"><MdOutlineError /> We have a error</div>
-                                    <p>Couldn't fetch the <em>{search}</em></p><br/>
+                                    <p>Couldn't fetch <em>{search}</em></p><br/>
                                     <p>Error Code: <strong>{webdata.code}</strong></p><br/>
-                                    <p>Time: <strong>{timeToLoad}ms</strong></p>
+                                    <p>Time: {timeToLoad}ms</p>
                                 </div>
                             </div>
                         </>

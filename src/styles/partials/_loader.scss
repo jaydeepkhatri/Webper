@@ -4,7 +4,15 @@
     align-items: center;
     flex-direction: column;
     padding: 40px 0;
-    img {
-        max-width: 400px;
+    svg {
+        fill: $theme;
+        animation: spin 0.5s linear infinite;
+        font-size: 48px;
+    }
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(1turn);
     }
 }

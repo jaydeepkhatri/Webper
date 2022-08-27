@@ -9,6 +9,7 @@ body {
   scroll-behavior: smooth;
   font-family: 'Inter', Arial, sans-serif;
   background: #f8fdff;
+  font-size: 15px;
 }
 
 ::-webkit-scrollbar {
@@ -44,8 +45,25 @@ body {
   padding: 40px 0;
 }
 
-.loader img {
-  max-width: 400px;
+.loader svg {
+  fill: #040506;
+  -webkit-animation: spin 0.5s linear infinite;
+          animation: spin 0.5s linear infinite;
+  font-size: 48px;
+}
+
+@-webkit-keyframes spin {
+  100% {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
+}
+
+@keyframes spin {
+  100% {
+    -webkit-transform: rotate(1turn);
+            transform: rotate(1turn);
+  }
 }
 
 header {
@@ -146,7 +164,7 @@ nav .menu-list .menu-item a svg {
 
 .buttons {
   position: absolute;
-  top: 80px;
+  top: 60px;
   right: 40px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -246,22 +264,11 @@ nav .menu-list .menu-item a svg {
   }
 }
 
-.status {
-  border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 20px;
-  color: #000;
-}
-
-.status .icon {
-  margin-right: 20px;
-}
-
-.status .statusinfo {
+.statusinfo {
   margin-bottom: 8px;
 }
 
-.status .statusinfo:last-child {
+.statusinfo:last-child {
   margin: 0;
 }
 

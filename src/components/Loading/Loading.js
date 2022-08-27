@@ -1,10 +1,9 @@
-import loadingimg from "../../assets/img/loading.png";
+import { BiLoaderAlt } from "react-icons/bi"
 
 const Loading = () => {
     return (
         <div className="loader">
-            <img src={loadingimg} alt="Loader image" />
-            Fetching results...
+            <BiLoaderAlt />
         </div>
     )
 }
