@@ -33,7 +33,7 @@ const Search = () => {
                     return true;
                 }
             }).then((data) => {
-                    console.log(data);
+                    //console.log(data);
                     setIsLoading(false);
                     setWebData(data);
                     setIsLoadingComplete(true);
@@ -41,7 +41,7 @@ const Search = () => {
                     setTimeToLoad(date.getTime() - timer)
                 })
                 .catch(error => {
-                    console.log(error);
+                    //console.log(error);
                     setError(true);
                     setIsLoading(false);
                     setWebData(error);
@@ -61,7 +61,7 @@ const Search = () => {
 
                     <div className="form">
                         <input type="text" className="search-input" onChange={(e) => {setIsLoadingComplete(false); setSearch(e.target.value)}} value={search} placeholder="Enter URL" />
-                        <button type="submit" onClick={() => {let date = new Date(); timer = date.getTime(); console.log(date.getTime()); fetchAPI();}}><FiSearch /></button>
+                        <button type="submit" onClick={() => {let date = new Date(); timer = date.getTime(); fetchAPI();}}><FiSearch /></button>
                     </div>
                 </div>
 
