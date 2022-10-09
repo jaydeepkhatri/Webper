@@ -1,7 +1,7 @@
 import { FiSearch } from "react-icons/fi";
 import { RiFileCopyLine } from "react-icons/ri";
 import { MdOutlineError } from "react-icons/md";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Status, ResponseHeaders, Config, Loading } from "../index";
 import axios from "axios";
 
@@ -21,7 +21,7 @@ const Search = () => {
     const fetchAPI = () => {
         
 
-        if(search.length != 0) {
+        if(search.length !== 0) {
             setIsLoading(true);
             if(error) setError(false);
 

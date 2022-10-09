@@ -1,6 +1,3 @@
-import {FiCheck} from "react-icons/fi";
-
-
 const Status = ({status, time, url}) => {
 
     let statusColor = status >= 500 ?
