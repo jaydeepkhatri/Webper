@@ -70,12 +70,13 @@
     gap: 20px;
     max-width: 1400px;
     margin: 0 auto;
-    background: #fff;
+    
     .box {
         padding: 20px;
         border: 1px solid #ddd;
         margin-bottom: 20px;
         height: fit-content;
+        background: #fff;
         border-top: 5px solid rgba($theme, 0.5);
         overflow: auto;
         max-height: 800px;

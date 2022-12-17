@@ -1,13 +1,12 @@
 * {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
   scroll-behavior: smooth;
-  font-family: 'Inter', Arial, sans-serif;
+  font-family: "Inter", Arial, sans-serif;
   background: #f8fdff;
   font-size: 15px;
 }
@@ -32,19 +31,11 @@ body {
 
 .loader {
   text-align: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
   padding: 40px 0;
 }
-
 .loader svg {
   fill: #040506;
   -webkit-animation: spin 0.5s linear infinite;
@@ -54,18 +45,15 @@ body {
 
 @-webkit-keyframes spin {
   100% {
-    -webkit-transform: rotate(1turn);
-            transform: rotate(1turn);
+    transform: rotate(1turn);
   }
 }
 
 @keyframes spin {
   100% {
-    -webkit-transform: rotate(1turn);
-            transform: rotate(1turn);
+    transform: rotate(1turn);
   }
 }
-
 header {
   position: -webkit-sticky;
   position: sticky;
@@ -74,28 +62,19 @@ header {
 }
 
 nav {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  align-items: center;
+  justify-content: space-between;
   background: #040506;
   color: #FFF;
   padding: 16px;
 }
-
 nav .menu-list {
   list-style: none;
 }
-
 nav .menu-list .menu-item a {
   color: #FFF;
 }
-
 nav .menu-list .menu-item a svg {
   vertical-align: middle;
 }
@@ -103,24 +82,15 @@ nav .menu-list .menu-item a svg {
 .section {
   margin: 0 auto;
 }
-
 .section .inputcontainer {
   height: 200px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  justify-content: center;
+  flex-direction: column;
   padding: 40px 20px;
   background: #040506;
   margin-bottom: 60px;
 }
-
 .section .text {
   text-align: center;
   margin-top: 12px;
@@ -129,34 +99,24 @@ nav .menu-list .menu-item a svg {
 }
 
 .form {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
 }
-
 .form .search-input, .form button {
   height: 50px;
   padding: 16px;
   border-radius: 0;
   border: 1px solid rgba(0, 0, 0, 0.3);
 }
-
 .form .search-input {
   border-right: 0;
   width: 100%;
   max-width: 480px;
 }
-
 .form .search-input:focus, .form .search-input:active {
   outline: none;
 }
-
 .form button {
   border-left: 0;
   background: #FFF;
@@ -166,26 +126,16 @@ nav .menu-list .menu-item a svg {
   position: absolute;
   top: 60px;
   right: 40px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   gap: 12px;
   pointer-events: none;
   opacity: 0;
-  -webkit-transition: 0.15s;
   transition: 0.15s;
 }
-
 .buttons button {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
   border-radius: 4px;
   height: 32px;
@@ -193,21 +143,16 @@ nav .menu-list .menu-item a svg {
   background: #FFF;
   color: #000;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
 }
 
 .content {
-  display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
   max-width: 1400px;
   margin: 0 auto;
-  background: #fff;
 }
-
 .content .box {
   padding: 20px;
   border: 1px solid #ddd;
@@ -215,41 +160,35 @@ nav .menu-list .menu-item a svg {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
+  background: #fff;
   border-top: 5px solid rgba(4, 5, 6, 0.5);
   overflow: auto;
   max-height: 800px;
-  -webkit-box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
-          box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
   position: relative;
 }
-
 .content .box:hover ::-webkit-scrollbar-track {
-  background: #e5e5e5;
+  background: rgb(229, 229, 229);
 }
-
 .content .box:hover .buttons {
   pointer-events: all;
   opacity: 1;
 }
-
 .content .box .title {
   font-size: 20px;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
 }
-
 .content .box pre {
   display: contents;
   white-space: pre-wrap;
 }
 
 .content.error {
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
 }
-
 .content.error .box {
-  border-top: 5px solid #ea4600;
+  border-top: 5px solid rgb(234, 70, 0);
   max-width: 600px;
   width: 100%;
   margin: auto;
@@ -259,32 +198,28 @@ nav .menu-list .menu-item a svg {
 @media (max-width: 992px) {
   .content {
     padding: 20px;
-    -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
-
 .statusinfo {
   margin-bottom: 8px;
 }
-
 .statusinfo:last-child {
   margin: 0;
 }
 
 .green {
-  background: #e5ffe7;
+  background: rgb(229, 255, 231);
 }
 
 .yellow {
-  background: #ffffc1;
+  background: rgb(255, 255, 193);
 }
 
 .red {
-  background: #ffe7db;
+  background: rgb(255, 231, 219);
 }
 
 .pink {
-  background: #fbd5fa;
-}
-/*# sourceMappingURL=main.css.map */
+  background: rgb(251, 213, 250);
+}/*# sourceMappingURL=main.css.map */
