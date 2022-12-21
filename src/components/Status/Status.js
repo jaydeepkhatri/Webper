@@ -1,4 +1,4 @@
-const Status = ({status, time, url}) => {
+const Status = ({status, time, url, dataSize, contentType}) => {
 
     let statusColor = status >= 500 ?
                         "pink" : status >= 400 ?
@@ -14,7 +14,8 @@ const Status = ({status, time, url}) => {
                 <p className="statusinfo">Status: <strong className={statusColor}>{status}</strong></p>
                 <p className="statusinfo">Time: <strong>{time}ms</strong></p>
                 <p className="statusinfo">URL: <strong>{url}</strong></p>
-
+                <p className="statusinfo">Data Size: <strong>{dataSize}</strong></p>
+                <p className="statusinfo">Data Type: <strong>{contentType.split(";")[0].split("/")[1]}</strong></p>
             </div>
         </>
     )

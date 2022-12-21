@@ -30,6 +30,8 @@
         border-right: 0;
         width: 100%;
         max-width: 480px;
+        font-size: 1rem;
+        color: #666;
         &:focus, &:active {
             outline: none;
         }
@@ -37,6 +39,7 @@
     button {
         border-left: 0;
         background: $white;
+        font-size: 1rem;
     }
 }
 
@@ -68,6 +71,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    padding: 20px;
     max-width: 1400px;
     margin: 0 auto;
     
@@ -79,7 +83,7 @@
         background: #fff;
         border-top: 5px solid rgba($theme, 0.5);
         overflow: auto;
-        max-height: 800px;
+        max-height: 1000px;
         box-shadow: 0 4px 8px 8px rgba(0,0,0,0.05);
         position: relative;
         &:hover{
@@ -96,6 +100,10 @@
             font-size: 20px;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+        }
+        img {
+            width: 100%;
+            height: auto;
         }
         pre {
             display: contents;
