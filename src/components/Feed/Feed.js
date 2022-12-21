@@ -37,7 +37,7 @@ const Search = () => {
                 //console.log(data);
                 setIsLoading(false);
                 setContentType(data.headers["content-type"]);
-                if(data.headers["content-type"] == "image/jpeg") {
+                if(data.headers["content-type"] === "image/jpeg") {
                     setImageBlob(`data:${data.headers["content-type"]}/ ${data.data}`)
                 }
                 console.log(data);
@@ -92,7 +92,7 @@ const Search = () => {
                             <div className="box">
                                 <div className="title">Data:</div>
                                 {
-                                    contentType == "image/jpeg" ? 
+                                    contentType === "image/jpeg" ? 
                                     <img src={imageBlob} alt="" /> :
                                     <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
                                 }
