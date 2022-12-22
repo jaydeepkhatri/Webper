@@ -7,7 +7,7 @@
 body {
   scroll-behavior: smooth;
   font-family: "Inter", Arial, sans-serif;
-  background: #f8fdff;
+  background: #fdfdfd;
   font-size: 15px;
 }
 
@@ -126,13 +126,8 @@ nav .menu-list .menu-item a svg {
 }
 
 .buttons {
-  position: absolute;
-  top: 60px;
-  right: 40px;
   display: flex;
   gap: 12px;
-  pointer-events: none;
-  opacity: 0;
   transition: 0.15s;
 }
 .buttons button {
@@ -140,20 +135,22 @@ nav .menu-list .menu-item a svg {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  font-size: 0.8em;
   border-radius: 4px;
-  height: 32px;
-  width: 32px;
+  padding: 6px 10px;
   background: #FFF;
   color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.buttons button svg {
+  margin-left: 4px;
 }
 
 .content {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-  padding: 20px;
+  padding: 0 60px;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -165,23 +162,24 @@ nav .menu-list .menu-item a svg {
   height: -moz-fit-content;
   height: fit-content;
   background: #fff;
-  border-top: 5px solid rgba(4, 5, 6, 0.5);
+  border-top: 5px solid rgba(4, 5, 6, 0.1);
   overflow: auto;
   max-height: 1000px;
-  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.01);
   position: relative;
 }
 .content .box:hover ::-webkit-scrollbar-track {
   background: rgb(229, 229, 229);
 }
-.content .box:hover .buttons {
-  pointer-events: all;
-  opacity: 1;
-}
-.content .box .title {
-  font-size: 20px;
+.content .box .title__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
+}
+.content .box .title__wrapper .title {
+  font-size: 20px;
 }
 .content .box img {
   width: 100%;

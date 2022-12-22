@@ -44,26 +44,24 @@
 }
 
 .buttons {
-    position: absolute;
-    top: 60px;
-    right: 40px;
     display: flex;
     gap: 12px;
-    pointer-events: none;
-    opacity: 0;
     transition: 0.15s;
     button {
         display: flex;
         align-items: center;
         justify-content: center;
         cursor: pointer;
+        font-size: 0.8em;
         border-radius: 4px;
-        height: 32px;
-        width: 32px;
+        padding: 6px 10px;
         background: $white;
         color: $black;
-        border: 1px solid rgba($black, 0.3);
-        box-shadow: 0 4px 4px rgba($black, 0.1);
+        border: 1px solid rgba($black, 0.1);
+        // box-shadow: 0 4px 4px rgba($black, 0.1);
+        svg {
+            margin-left: 4px;
+        }
     }
 }
 
@@ -71,7 +69,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    padding: 20px;
+    padding: 0 60px;
     max-width: 1400px;
     margin: 0 auto;
     
@@ -81,26 +79,28 @@
         margin-bottom: 20px;
         height: fit-content;
         background: #fff;
-        border-top: 5px solid rgba($theme, 0.5);
+        border-top: 5px solid rgba($theme, 0.1);
         overflow: auto;
         max-height: 1000px;
-        box-shadow: 0 4px 8px 8px rgba(0,0,0,0.05);
+        box-shadow: 0 4px 8px 8px rgba(0,0,0,0.01);
         position: relative;
         &:hover{
             ::-webkit-scrollbar-track {
                 background: rgb(229, 229, 229);
             }
-            .buttons {
-                pointer-events: all;
-                opacity: 1;
-            }
             
         }
-        .title {
-            font-size: 20px;
+        .title__wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+            .title {
+                font-size: 20px;
+            }
         }
+        
         img {
             width: 100%;
             height: auto;

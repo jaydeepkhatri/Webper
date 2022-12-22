@@ -90,15 +90,18 @@ const Search = () => {
                         </>
                         : <div className="content">
                             <div className="box">
-                                <div className="title">Data:</div>
+                                <div className="title__wrapper">
+                                    <p className="title">Data</p>
+                                    <div className="buttons">
+                                        <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>COPY <RiFileCopyLine /></button>
+                                    </div>
+                                </div>
                                 {
                                     contentType === "image/jpeg" ? 
                                     <img src={imageBlob} alt="" /> :
                                     <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
                                 }
-                                <div className="buttons">
-                                    <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}><RiFileCopyLine /></button>
-                                </div>
+                                
                             </div>
                             <div className="info">
                                 <Status status={webdata.status} time={timeToLoad} url={search} dataSize={dataSize} contentType={contentType} />
