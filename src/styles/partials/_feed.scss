@@ -21,17 +21,21 @@
     align-items: center;
     justify-content: center;
     .search-input, button {
-        height: 50px;
+        height: 48px;
         @include padding(2);
         border-radius: 0;
-        border: 1px solid rgba(0,0,0,0.3);
+        border: 0;
+        border-radius: 0 40px 40px 0;
+        //border: 1px solid rgba(0,0,0,0.3);
     }
     .search-input {
         border-right: 0;
         width: 100%;
         max-width: 480px;
-        font-size: 1rem;
+        font-size: 0.9rem;
         color: #666;
+        border-radius: 40px 0 0 40px;
+        padding: 16px 24px;
         &:focus, &:active {
             outline: none;
         }
@@ -58,9 +62,13 @@
         background: $white;
         color: $black;
         border: 1px solid rgba($black, 0.1);
+        transition: 0.1s ease-in-out;
         // box-shadow: 0 4px 4px rgba($black, 0.1);
         svg {
             margin-left: 4px;
+        }
+        &:hover {
+            background: #EEE;
         }
     }
 }
@@ -79,7 +87,7 @@
         margin-bottom: 20px;
         height: fit-content;
         background: #fff;
-        border-top: 5px solid rgba($theme, 0.1);
+        border-top: 5px solid rgba($black, 0.1);
         overflow: auto;
         max-height: 1000px;
         box-shadow: 0 4px 8px 8px rgba(0,0,0,0.01);
@@ -96,6 +104,7 @@
             justify-content: space-between;
             border-bottom: 1px solid #ddd;
             margin-bottom: 20px;
+            padding: 8px 0;
             .title {
                 font-size: 20px;
             }

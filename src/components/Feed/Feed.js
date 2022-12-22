@@ -54,7 +54,6 @@ const Search = () => {
                     setError(true);
                     setIsLoading(false);
                     setWebData(error);
-                    setContentType(error.headers["content-type"]);
                     let date = new Date();
                     setTimeToLoad(date.getTime() - timer)
                     setIsLoadingComplete(true);
@@ -69,10 +68,10 @@ const Search = () => {
         <div className="section">
             <div className="inputcontainer" >
 
-                <div className="form">
+                <form method="get" action="/" onSubmit={(e) => { e.preventDefault(); let date = new Date(); timer = date.getTime(); fetchAPI(); }} className="form">
                     <input type="text" className="search-input" onChange={(e) => { setIsLoadingComplete(false); setSearch(e.target.value) }} value={search} placeholder="Enter URL" />
                     <button type="submit" onClick={() => { let date = new Date(); timer = date.getTime(); fetchAPI(); }}><FiSearch /></button>
-                </div>
+                </form>
             </div>
 
             {

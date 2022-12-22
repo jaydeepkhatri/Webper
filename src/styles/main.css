@@ -37,7 +37,7 @@ body {
   padding: 40px 0;
 }
 .loader svg {
-  fill: #040506;
+  fill: #FA4659;
   -webkit-animation: spin 0.5s linear infinite;
           animation: spin 0.5s linear infinite;
   font-size: 48px;
@@ -65,9 +65,13 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #040506;
+  background: #031022;
   color: #FFF;
   padding: 16px;
+}
+nav h2 a {
+  color: #FFF;
+  text-decoration: none;
 }
 nav .menu-list {
   list-style: none;
@@ -88,7 +92,7 @@ nav .menu-list .menu-item a svg {
   justify-content: center;
   flex-direction: column;
   padding: 40px 20px;
-  background: #040506;
+  background: #FA4659;
   margin-bottom: 60px;
 }
 .section .text {
@@ -104,17 +108,20 @@ nav .menu-list .menu-item a svg {
   justify-content: center;
 }
 .form .search-input, .form button {
-  height: 50px;
+  height: 48px;
   padding: 16px;
   border-radius: 0;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  border: 0;
+  border-radius: 0 40px 40px 0;
 }
 .form .search-input {
   border-right: 0;
   width: 100%;
   max-width: 480px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #666;
+  border-radius: 40px 0 0 40px;
+  padding: 16px 24px;
 }
 .form .search-input:focus, .form .search-input:active {
   outline: none;
@@ -141,9 +148,13 @@ nav .menu-list .menu-item a svg {
   background: #FFF;
   color: #000;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 0.1s ease-in-out;
 }
 .buttons button svg {
   margin-left: 4px;
+}
+.buttons button:hover {
+  background: #EEE;
 }
 
 .content {
@@ -162,7 +173,7 @@ nav .menu-list .menu-item a svg {
   height: -moz-fit-content;
   height: fit-content;
   background: #fff;
-  border-top: 5px solid rgba(4, 5, 6, 0.1);
+  border-top: 5px solid rgba(0, 0, 0, 0.1);
   overflow: auto;
   max-height: 1000px;
   box-shadow: 0 4px 8px 8px rgba(0, 0, 0, 0.01);
@@ -177,6 +188,7 @@ nav .menu-list .menu-item a svg {
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
   margin-bottom: 20px;
+  padding: 8px 0;
 }
 .content .box .title__wrapper .title {
   font-size: 20px;
