@@ -114,7 +114,10 @@
             width: 100%;
             height: auto;
         }
-        pre {
+        em {
+            word-break: break-all;;
+        }
+        pre, em {
             display: contents;
             white-space: pre-wrap;
         }

@@ -9,7 +9,7 @@ const Search = () => {
     //testing API without CORS
     const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
     //const [search, setSearch] = useState('http://localhost:3000/');
-    //const [search, setSearch] = useState('');
+    //const [search, setSearch] = useState('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
     const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -37,13 +37,20 @@ const Search = () => {
                 //console.log(data);
                 setIsLoading(false);
                 setContentType(data.headers["content-type"]);
-                if(data.headers["content-type"] === "image/jpeg") {
-                    setImageBlob(`data:${data.headers["content-type"]}/ ${data.data}`)
-                }
+                // if (data.headers["content-type"] === "image/jpeg") {
+                //     console.log(data.data);
+                //     let base64 = btoa(
+                //         new Uint8Array(data.data).reduce(
+                //             (data, byte) => data + String.fromCharCode(byte),
+                //             ''
+                //         )
+                //     )
+                //     setImageBlob(base64);
+                // }
                 console.log(data);
                 setWebData(data);
-                
-                
+
+
                 setIsLoadingComplete(true);
                 setDataSize(data.data.length)
                 let date = new Date();
@@ -96,11 +103,11 @@ const Search = () => {
                                     </div>
                                 </div>
                                 {
-                                    contentType === "image/jpeg" ? 
-                                    <img src={imageBlob} alt="" /> :
-                                    <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+                                    contentType === "image/jpeg" ?
+                                        <img src={`data:${contentType};charset=utf-8;base64,${imageBlob}`} alt="" /> :
+                                        <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
                                 }
-                                
+
                             </div>
                             <div className="info">
                                 <Status status={webdata.status} time={timeToLoad} url={search} dataSize={dataSize} contentType={contentType} />

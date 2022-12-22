@@ -197,7 +197,10 @@ nav .menu-list .menu-item a svg {
   width: 100%;
   height: auto;
 }
-.content .box pre {
+.content .box em {
+  word-break: break-all;
+}
+.content .box pre, .content .box em {
   display: contents;
   white-space: pre-wrap;
 }
@@ -221,6 +224,8 @@ nav .menu-list .menu-item a svg {
 }
 .statusinfo {
   margin-bottom: 8px;
+  word-break: break-all;
+  font-size: 0.9rem;
 }
 .statusinfo:last-child {
   margin: 0;
