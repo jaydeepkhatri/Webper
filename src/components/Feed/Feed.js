@@ -1,15 +1,17 @@
 import { FiSearch } from "react-icons/fi";
 import { RiFileCopyLine } from "react-icons/ri";
 import { MdOutlineError } from "react-icons/md";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Status, ResponseHeaders, Config, Loading } from "../index";
 import axios from "axios";
+import { Buffer } from 'buffer';
 
 const Search = () => {
     //testing API without CORS
     const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
     //const [search, setSearch] = useState('http://localhost:3000/');
     //const [search, setSearch] = useState('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
+    
     const [webdata, setWebData] = useState({});
     const [error, setError] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
@@ -17,7 +19,7 @@ const Search = () => {
     const [timeToLoad, setTimeToLoad] = useState(0);
     const [contentType, setContentType] = useState("");
     const [dataSize, setDataSize] = useState(0);
-    const [imageBlob, setImageBlob] = useState("");
+    const [imageBlob, setImageBlob] = useState(null);
 
     let timer = 0;
 
@@ -35,17 +37,11 @@ const Search = () => {
                 }
             }).then((data) => {
                 //console.log(data);
-                setIsLoading(false);
+                
                 setContentType(data.headers["content-type"]);
-                // if (data.headers["content-type"] === "image/jpeg") {
-                //     console.log(data.data);
-                //     let base64 = btoa(
-                //         new Uint8Array(data.data).reduce(
-                //             (data, byte) => data + String.fromCharCode(byte),
-                //             ''
-                //         )
-                //     )
-                //     setImageBlob(base64);
+                // if (data.headers["content-type"] === "image/jpeg" || data.headers["content-type"] == "image/png") {
+                //     const buffer = Buffer.from(data.data, 'binary');
+                //     setImageBlob(`data:${data.headers["content-type"]};base64,${buffer.toString('base64')}`);   
                 // }
                 console.log(data);
                 setWebData(data);
@@ -54,7 +50,8 @@ const Search = () => {
                 setIsLoadingComplete(true);
                 setDataSize(data.data.length)
                 let date = new Date();
-                setTimeToLoad(date.getTime() - timer)
+                setTimeToLoad(date.getTime() - timer);
+                setIsLoading(false);
             })
                 .catch(error => {
                     console.log(error);
@@ -66,15 +63,12 @@ const Search = () => {
                     setIsLoadingComplete(true);
                 });
         }
-
-
     }
 
 
     return (
         <div className="section">
             <div className="inputcontainer" >
-
                 <form method="get" action="/" onSubmit={(e) => { e.preventDefault(); let date = new Date(); timer = date.getTime(); fetchAPI(); }} className="form">
                     <input type="text" className="search-input" onChange={(e) => { setIsLoadingComplete(false); setSearch(e.target.value) }} value={search} placeholder="Enter URL" />
                     <button type="submit" onClick={() => { let date = new Date(); timer = date.getTime(); fetchAPI(); }}><FiSearch /></button>
@@ -104,8 +98,8 @@ const Search = () => {
                                 </div>
                                 {
                                     contentType === "image/jpeg" ?
-                                        <img src={`data:${contentType};charset=utf-8;base64,${imageBlob}`} alt="" /> :
-                                        <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+                                    <img src={imageBlob} alt="" />:
+                                    <pre><code>{typeof webdata.data == "object" ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
                                 }
 
                             </div>
