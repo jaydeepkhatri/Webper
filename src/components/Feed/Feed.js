@@ -1,8 +1,7 @@
 import { FiSearch } from "react-icons/fi";
 import { RiFileCopyLine } from "react-icons/ri";
-import { MdOutlineError } from "react-icons/md";
-import { useState, useRef } from "react";
-import { Status, ResponseHeaders, Config, Loading } from "../index";
+import { useState } from "react";
+import { Status, ResponseHeaders, Config, Loading, Error } from "../index";
 import axios from "axios";
 import { Buffer } from 'buffer';
 
@@ -79,14 +78,7 @@ const Search = () => {
                 isLoading ? <Loading /> : isLoadingComplete ? (
                     error ?
                         <>
-                            <div className="content error">
-                                <div className="box">
-                                    <div className="title"><MdOutlineError /> We have a error</div>
-                                    <p>Couldn't fetch <em>{search}</em></p><br />
-                                    <p>Error Code: <strong>{webdata.code}</strong></p><br />
-                                    <p>Time: {timeToLoad}ms</p>
-                                </div>
-                            </div>
+                            <Error search={search} err_code={webdata.code} timeToLoad={timeToLoad}  />
                         </>
                         : <div className="content">
                             <div className="box">
