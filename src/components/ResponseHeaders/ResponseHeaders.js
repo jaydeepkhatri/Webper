@@ -10,8 +10,13 @@ const ResponseHeaders = ({ responseheader }) => {
                         <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(responseheader))}>Copy <RiFileCopyLine /></button>
                     </div>
                 </div>
-                <pre>{JSON.stringify(responseheader, null, 2)}</pre>
-
+                <div>
+                    {
+                        Object.entries(responseheader).map(([key, value]) => (
+                            <p key={key}><span>{key}</span>: <span>{value}</span></p>
+                        ))
+                    }
+                </div>
             </div>
 
         </>

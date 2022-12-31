@@ -159,6 +159,7 @@ nav .menu-list .menu-item a svg {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
+  margin-bottom: 20px;
 }
 .content .box {
   padding: 20px;
@@ -193,6 +194,14 @@ nav .menu-list .menu-item a svg {
 }
 .content .box em {
   word-break: break-all;
+}
+.content .box span {
+  padding: 4px 0px;
+  display: inline-block;
+  min-width: 160px;
+}
+.content .box span:nth-child(odd) {
+  font-weight: 700;
 }
 .content .box pre,
 .content .box em {
