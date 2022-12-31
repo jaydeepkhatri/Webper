@@ -43,7 +43,7 @@ const Search = () => {
 
                 setContentType(data.headers["content-type"]);
 
-                if (data.headers["content-type"] === "image/jpeg" || data.headers["content-type"] == "image/png") {
+                if (data.headers["content-type"] === "image/jpeg" || data.headers["content-type"] === "image/png") {
                     setImageBlob(window.URL.createObjectURL(data.data));
                 }
                 console.log(data);
