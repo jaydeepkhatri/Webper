@@ -2,19 +2,20 @@ header {
     position: sticky;
     top: 0;
     z-index: 10;
+    @include padding(2);
+    background: #031022;
+    color: $white;
 }
 nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #031022;
-    color: $white;
-    @include padding(2);
+    
     h2 a {
         color: $white;
         text-decoration: none;
     }
-    // box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
     .menu-list {
         list-style: none;
         .menu-item {

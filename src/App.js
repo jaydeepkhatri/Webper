@@ -1,5 +1,5 @@
 import './styles/main.css';
-import {Header, Feed} from "./components"
+import { Header, Feed } from "./components"
 
 function App() {
   return (

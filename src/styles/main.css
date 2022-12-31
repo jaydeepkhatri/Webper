@@ -7,7 +7,7 @@
 body {
   scroll-behavior: smooth;
   font-family: "Inter", Arial, sans-serif;
-  background: #fdfdfd;
+  background: #FFF;
   font-size: 15px;
 }
 
@@ -27,6 +27,12 @@ body {
 
 .text-center {
   text-align: center;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .loader {
@@ -59,15 +65,16 @@ header {
   position: sticky;
   top: 0;
   z-index: 10;
+  padding: 16px;
+  background: #031022;
+  color: #FFF;
 }
 
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #031022;
-  color: #FFF;
-  padding: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 nav h2 a {
   color: #FFF;
@@ -87,13 +94,24 @@ nav .menu-list .menu-item a svg {
   margin: 0 auto;
 }
 .section .inputcontainer {
-  height: 200px;
+  height: 600px;
   display: flex;
   justify-content: center;
   flex-direction: column;
-  padding: 40px 20px;
-  background: #FA4659;
+  background: linear-gradient(to bottom, rgb(0, 0, 0) 5%, rgba(255, 255, 255, 0.3)), url("https://source.unsplash.com/random/?nature&orientation=landscape");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
   margin-bottom: 60px;
+  padding: 0 20px;
+  transition: 0.15s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+.section .inputcontainer.searched {
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(55, 55, 55, 0.5) 5%, rgba(56, 56, 56, 0.5)), url(https://source.unsplash.com/random/?nature&orientation=landscape);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 }
 .section .text {
   text-align: center;
@@ -107,68 +125,44 @@ nav .menu-list .menu-item a svg {
   align-items: center;
   justify-content: center;
 }
-.form .search-input, .form button {
+.form .search-input,
+.form button {
   height: 48px;
   padding: 16px;
   border-radius: 0;
   border: 0;
-  border-radius: 0 40px 40px 0;
+  border-radius: 0 12px 12px 0;
 }
 .form .search-input {
+  border: 1px solid #CCC;
   border-right: 0;
   width: 100%;
   max-width: 480px;
   font-size: 0.9rem;
   color: #666;
-  border-radius: 40px 0 0 40px;
+  border-radius: 12px 0 0 12px;
   padding: 16px 24px;
 }
 .form .search-input:focus, .form .search-input:active {
   outline: none;
 }
 .form button {
+  padding: 0 20px;
   border-left: 0;
-  background: #FFF;
-  font-size: 1rem;
-}
-
-.buttons {
-  display: flex;
-  gap: 12px;
-  transition: 0.15s;
-}
-.buttons button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background: #000;
+  color: #FFF;
   cursor: pointer;
-  font-size: 0.8em;
-  border-radius: 4px;
-  padding: 6px 10px;
-  background: #FFF;
-  color: #000;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  transition: 0.1s ease-in-out;
-}
-.buttons button svg {
-  margin-left: 4px;
-}
-.buttons button:hover {
-  background: #EEE;
+  font-size: 1rem;
 }
 
 .content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 20px;
-  padding: 0 60px;
-  max-width: 1400px;
-  margin: 0 auto;
 }
 .content .box {
   padding: 20px;
   border: 1px solid #ddd;
-  margin-bottom: 20px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -187,8 +181,8 @@ nav .menu-list .menu-item a svg {
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
-  margin-bottom: 20px;
-  padding: 8px 0;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
 }
 .content .box .title__wrapper .title {
   font-size: 20px;
@@ -200,9 +194,34 @@ nav .menu-list .menu-item a svg {
 .content .box em {
   word-break: break-all;
 }
-.content .box pre, .content .box em {
+.content .box pre,
+.content .box em {
   display: contents;
   white-space: pre-wrap;
+}
+.content .box .buttons {
+  display: flex;
+  gap: 12px;
+  transition: 0.15s;
+}
+.content .box .buttons button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8em;
+  border-radius: 4px;
+  padding: 6px 10px;
+  background: #FFF;
+  color: #000;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: 0.1s ease-in-out;
+}
+.content .box .buttons button svg {
+  margin-left: 4px;
+}
+.content .box .buttons button:hover {
+  background: #EEE;
 }
 
 .content.error {
@@ -213,6 +232,25 @@ nav .menu-list .menu-item a svg {
   max-width: 600px;
   width: 100%;
   margin: auto;
+}
+
+.show__button_group {
+  margin-bottom: 16px;
+}
+.show__button_group .btn {
+  padding: 12px 20px;
+  background: #EEE;
+  font-size: 1em;
+  border: none;
+  color: #000;
+  border-radius: 4px;
+  margin-right: 8px;
+  text-transform: capitalize;
+  cursor: pointer;
+}
+.show__button_group .active {
+  background: #FA4659;
+  color: #FFF;
 }
 
 /*Media Queries*/

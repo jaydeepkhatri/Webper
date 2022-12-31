@@ -11,7 +11,7 @@ $white: #FFF;
 body {
     scroll-behavior: smooth;
     font-family: 'Inter', Arial, sans-serif;
-    background: #fdfdfd;
+    background: $white;
     font-size: 15px;
 }
 ::-webkit-scrollbar {
@@ -27,6 +27,12 @@ body {
 }
 .text-center {
     text-align: center;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
 
