@@ -13,11 +13,11 @@ const Status = ({ status, time, url, dataSize, contentType }) => {
                 <div className="title__wrapper">
                     <p className="title">Info</p>
                 </div>
-                <p className="statusinfo">Status: <strong className={statusColor}>{status}</strong></p>
-                <p className="statusinfo">Time: <strong>{time}ms</strong></p>
-                <p className="statusinfo">URL: <strong>{url}</strong></p>
-                <p className="statusinfo">Data Length: <strong>{dataSize}</strong></p>
-                <p className="statusinfo">Data Type: <strong>{contentType.split(";")[0].split("/")[1]}</strong></p>
+                <p><span>Status:</span>:<span className={statusColor}>{status}</span></p>
+                <p><span>Time:</span>:<span>{time}ms</span></p>
+                <p><span>URL:</span>:<span>{url}</span></p>
+                <p><span>Data Length:</span>:<span>{dataSize}</span></p>
+                <p><span>Data Type:</span>:<span>{contentType.split(";")[0].split("/")[1]}</span></p>
             </div>
         </>
     )

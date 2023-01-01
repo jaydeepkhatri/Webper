@@ -7,9 +7,8 @@ import axios from "axios";
 
 
 const Search = () => {
-    //testing API without CORS
-    const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
-    //const [search, setSearch] = useState('http://localhost:3000/');
+    //const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
+    const [search, setSearch] = useState('http://localhost:3000/');
     //const [search, setSearch] = useState('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
 
     const [webdata, setWebData] = useState({});

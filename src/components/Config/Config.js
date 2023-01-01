@@ -21,7 +21,7 @@ const Config = ({ config }) => {
             <div className="title__wrapper">
                 <p className="title">Config</p>
                 <div className="buttons">
-                    <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(config))}>Copy <RiFileCopyLine /></button>
+                    <button onClick={() => navigator.clipboard.writeText(JSON.stringify(updatedConfigObject))}>Copy <RiFileCopyLine /></button>
                 </div>
             </div>
             <div>

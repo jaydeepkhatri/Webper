@@ -195,8 +195,12 @@ nav .menu-list .menu-item a svg {
 .content .box em {
   word-break: break-all;
 }
+.content .box p {
+  display: flex;
+  padding: 4px 0;
+  gap: 4px;
+}
 .content .box span {
-  padding: 4px 0px;
   display: inline-block;
   min-width: 160px;
 }

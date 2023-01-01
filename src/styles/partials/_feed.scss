@@ -117,8 +117,13 @@
             ;
         }
 
+        p {
+            display: flex;
+            padding: 4px 0;
+            gap: 4px;
+        }
+
         span {
-            padding: 4px 0px;
             display: inline-block;
             min-width: 160px;
         }
