@@ -1,8 +1,10 @@
 import { FiSearch } from "react-icons/fi";
-import { RiFileCopyLine } from "react-icons/ri";
+import { RiFileCopyLine, RiDownloadLine } from "react-icons/ri";
 import { useState } from "react";
 import { Status, ResponseHeaders, Config, Loading, Error } from "../index";
 import axios from "axios";
+
+
 
 const Search = () => {
     //testing API without CORS
@@ -68,6 +70,18 @@ const Search = () => {
         }
     }
 
+    const handleDownload = (json) => {
+
+        //Download JSON file
+        const file = new Blob([JSON.stringify(json)], { type: 'application/json' });
+        const fileURL = URL.createObjectURL(file);
+      
+        const link = document.createElement('a');
+        link.download = crypto.randomUUID() + ".json";
+        link.href = fileURL;
+        link.click();
+      }
+
 
     return (
         <>
@@ -105,7 +119,8 @@ const Search = () => {
                                             <div className="title__wrapper">
                                                 <p className="title">Data</p>
                                                 <div className="buttons">
-                                                    <button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
+                                                    <button onClick={() => handleDownload(webdata.data)}><RiDownloadLine /> Download</button>
+                                                    <button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
                                                 </div>
                                             </div>
                                             {

@@ -242,6 +242,12 @@ nav .menu-list .menu-item a svg {
   width: 100%;
   margin: auto;
 }
+.content.error ul {
+  padding-left: 20px;
+}
+.content.error ul li {
+  margin-bottom: 8px;
+}
 
 .show__button_group {
   margin-bottom: 16px;
