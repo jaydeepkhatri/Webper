@@ -118,7 +118,7 @@ const Search = () => {
                                             <div className="title__wrapper">
                                                 <p className="title">Data</p>
                                                 <div className="buttons">
-                                                    <button onClick={() => handleDownload(webdata.data)}><RiDownloadLine /> Download</button>
+                                                    <button onClick={() => handleDownload(webdata.data)}>Download <RiDownloadLine /></button>
                                                     <button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
                                                 </div>
                                             </div>
