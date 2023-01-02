@@ -80,7 +80,7 @@
     margin-bottom: 20px;
 
     .box {
-        padding: 20px;
+        @include padding(2.5);
         border: 1px solid #ddd;
         height: fit-content;
         background: #fff;
@@ -214,7 +214,7 @@
 /*Media Queries*/
 @media (max-width: 992px) {
     .content {
-        padding: 20px;
+        @include padding(2.5);
         grid-template-columns: 1fr;
     }
 }
