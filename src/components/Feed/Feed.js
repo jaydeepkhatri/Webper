@@ -1,3 +1,4 @@
+import "./feed.scss";
 import { FiSearch } from "react-icons/fi";
 import { RiFileCopyLine, RiDownloadLine } from "react-icons/ri";
 import { useState } from "react";

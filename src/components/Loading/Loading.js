@@ -1,3 +1,4 @@
+import "./loader.scss";
 import { BiLoaderAlt } from "react-icons/bi"
 
 const Loading = () => {

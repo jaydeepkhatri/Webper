@@ -1,4 +1,5 @@
-import {FiGithub} from "react-icons/fi";
+import "./header.scss";
+import { FiGithub } from "react-icons/fi";
 
 const Header = () => {
     return (

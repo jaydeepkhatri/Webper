@@ -1,7 +1,4 @@
-$theme: #FA4659;
-$black: #000;
-$white: #FFF;
-
+@import '../vendors/variables';
 
 * {
     margin: 0;
@@ -34,13 +31,3 @@ body {
     margin: 0 auto;
     padding: 0 20px;
 }
-
-
-@mixin padding($value) {
-    padding: $value*8px;
-}
-
-@import "./partials/loader";
-@import "./partials/header";
-@import "./partials/feed";
-@import "./partials/status";

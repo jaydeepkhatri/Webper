@@ -1,3 +1,4 @@
+import "./status.scss";
 const Status = ({ status, time, url, dataSize, contentType }) => {
 
     let statusColor = status >= 500 ?

@@ -1,4 +1,4 @@
-import './styles/main.css';
+import './styles/main.scss';
 import { Header, Feed } from "./components"
 
 function App() {
