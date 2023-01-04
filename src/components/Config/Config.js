@@ -2,6 +2,7 @@ import { RiFileCopyLine } from 'react-icons/ri';
 import React from 'react';
 
 const Config = ({ config }) => {
+
 	let updatedConfigObject = {};
 	let tobeSkip = ['adapter', 'transformRequest', 'transformResponse', 'validateStatus'];
 
@@ -15,8 +16,8 @@ const Config = ({ config }) => {
 				}
 			}
 		}
-
 	}
+
 	return (
 		<div className="box">
 			<div className="title__wrapper">
@@ -25,10 +26,10 @@ const Config = ({ config }) => {
 					<button onClick={() => navigator.clipboard.writeText(JSON.stringify(updatedConfigObject))}>Copy <RiFileCopyLine /></button>
 				</div>
 			</div>
-			<div>
+			<div className="info">
 				{
 					Object.entries(updatedConfigObject).map(([key, value]) => (
-						<p key={key}><span>{key}</span>: <span>{value}</span></p>
+						<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(value)}><RiFileCopyLine /></button></p>
 					))
 				}
 			</div>

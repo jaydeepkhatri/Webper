@@ -9,7 +9,8 @@ import axios from 'axios';
 
 const Search = () => {
 	//const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
-	const [search, setSearch] = useState('http://localhost:3000/');
+	//const [search, setSearch] = useState('http://localhost:3000/');
+	const [search, setSearch] = useState('https://jethalal-quotes.vercel.app/v1');
 	//const [search, setSearch] = useState('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
 
 	const [webdata, setWebData] = useState({});
@@ -19,13 +20,13 @@ const Search = () => {
 	const [timeToLoad, setTimeToLoad] = useState(0);
 	const [contentType, setContentType] = useState('');
 
-	let sections = ['data', 'headers', 'config'];
 	const [toShow, setToShow] = useState(0);
 	const [dataSize, setDataSize] = useState(0);
 	const [imageBlob, setImageBlob] = useState(null);
 
 
 
+	let sections = ['data', 'headers', 'config'];
 	let timer = 0;
 
 	const fetchAPI = () => {
@@ -46,7 +47,10 @@ const Search = () => {
 				setContentType(data.headers['content-type']);
 
 				if (data.headers['content-type'] === 'image/jpeg' || data.headers['content-type'] === 'image/png') {
-					setImageBlob(window.URL.createObjectURL(data.data));
+					setImageBlob(btoa(
+						new Uint8Array(data.data).reduce(
+							(data, byte) => data + String.fromCharCode(byte), '')
+					));
 				}
 				console.log(data);
 				setWebData(data);
@@ -119,7 +123,8 @@ const Search = () => {
 											<div className='title__wrapper'>
 												<p className='title'>Data</p>
 												<div className='buttons'>
-													<button onClick={() => handleDownload(webdata.data)}>Download <RiDownloadLine /></button>
+
+													<button onClick={() => { handleDownload(webdata.data); }} >Download <RiDownloadLine /></button>
 													<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
 												</div>
 											</div>
