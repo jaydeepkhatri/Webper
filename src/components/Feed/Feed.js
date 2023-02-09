@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { Status, ResponseHeaders, Config, Loading, Error } from '../index';
 import axios from 'axios';
 import { AppContext } from '../../App';
-
+import { downloadFile } from '../../utils/downloadFile.js';
 
 
 const Search = () => {
@@ -69,19 +69,6 @@ const Search = () => {
 		}
 	};
 
-	const handleDownload = (json) => {
-
-		//Download JSON file
-		const file = new Blob([JSON.stringify(json)], { type: 'application/json' });
-		const fileURL = URL.createObjectURL(file);
-
-		const link = document.createElement('a');
-		link.download = crypto.randomUUID() + '.json';
-		link.href = fileURL;
-		link.click();
-	};
-
-
 	return (
 		<>
 			<div className='section'>
@@ -93,54 +80,53 @@ const Search = () => {
 				</div>
 
 				{
-					isLoading ? <Loading /> : isLoadingComplete ? (
-						error ?
-							<>
+					isLoading ?
+						<Loading /> : isLoadingComplete ? (
+							error ?
 								<Error />
-							</>
-							:
-							<>
-								<div className='container'>
-									<div className='show__button_group'>
-										{
-											sections.map((section, i) => (
-												<>
-													<button key={i} className={`btn ${toShow === i ? 'active' : ''}`} onClick={() => setToShow(i)}>{section}</button>
-												</>
-
-											))
-										}
-									</div>
-								</div>
-								<div className='content container'>
-									<div className='content__left'>
-										{sections[toShow] === 'data' ? <div className='box'>
-											<div className='title__wrapper'>
-												<p className='title'>Data</p>
-												<div className='buttons'>
-													<button onClick={() => { handleDownload(webdata.data); }} >Download <RiDownloadLine /></button>
-													<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
-												</div>
-											</div>
+								:
+								<>
+									<div className='container'>
+										<div className='show__button_group'>
 											{
-												contentType === 'image/jpeg' ?
-													<img src={imageBlob} alt='' /> :
-													<pre><code>{typeof webdata.data == 'object' ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+												sections.map((section, i) => (
+													<>
+														<button key={i} className={`btn ${toShow === i ? 'active' : ''}`} onClick={() => setToShow(i)}>{section}</button>
+													</>
+
+												))
 											}
 										</div>
-											: sections[toShow] === 'headers' ? <ResponseHeaders />
-												: sections[toShow] === 'config' ? <Config />
-													: null
-										}
 									</div>
-									<div className='content__right'>
-										<div className='info'>
-											<Status status={webdata.status} time={timeToLoad} url={search} dataSize={dataSize} contentType={contentType} />
+									<div className='content container'>
+										<div className='content__left'>
+											{sections[toShow] === 'data' ? <div className='box'>
+												<div className='title__wrapper'>
+													<p className='title'>Data</p>
+													<div className='buttons'>
+														<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
+														<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
+													</div>
+												</div>
+												{
+													contentType === 'image/jpeg' ?
+														<img src={imageBlob} alt='' /> :
+														<pre><code>{typeof webdata.data == 'object' ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+												}
+											</div>
+												: sections[toShow] === 'headers' ? <ResponseHeaders />
+													: sections[toShow] === 'config' ? <Config />
+														: null
+											}
+										</div>
+										<div className='content__right'>
+											<div className='info'>
+												<Status status={webdata.status} time={timeToLoad} url={search} dataSize={dataSize} contentType={contentType} />
+											</div>
 										</div>
 									</div>
-								</div>
-							</>
-					) : <p className='text-center'>Click the search <FiSearch /> to fetch results.</p>
+								</>
+						) : <p className='text-center'>Click the search <FiSearch /> to fetch results.</p>
 				}
 			</div>
 
