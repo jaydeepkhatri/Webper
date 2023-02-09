@@ -118,7 +118,6 @@ const Search = () => {
 											<div className='title__wrapper'>
 												<p className='title'>Data</p>
 												<div className='buttons'>
-
 													<button onClick={() => { handleDownload(webdata.data); }} >Download <RiDownloadLine /></button>
 													<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
 												</div>
@@ -129,7 +128,7 @@ const Search = () => {
 													<pre><code>{typeof webdata.data == 'object' ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
 											}
 										</div>
-											: sections[toShow] === 'headers' ? <ResponseHeaders responseheader={webdata.headers} />
+											: sections[toShow] === 'headers' ? <ResponseHeaders />
 												: sections[toShow] === 'config' ? <Config />
 													: null
 										}

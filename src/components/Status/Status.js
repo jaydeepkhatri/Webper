@@ -1,12 +1,16 @@
 import './status.scss';
-const Status = ({ status, time, url, dataSize, contentType }) => {
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 
-	let statusColor = status >= 500 ?
-		'pink' : status >= 400 ?
-			'red' : status >= 300 ?
-				'yellow' : status >= 200 ?
+const Status = () => {
+
+	const { webdata, timeToLoad, search, dataSize, contentType } = useContext(AppContext);
+
+	let statusColor = webdata.status >= 500 ?
+		'pink' : webdata.status >= 400 ?
+			'red' : webdata.status >= 300 ?
+				'yellow' : webdata.status >= 200 ?
 					'green' : null;
-
 
 	return (
 		<>
@@ -15,8 +19,8 @@ const Status = ({ status, time, url, dataSize, contentType }) => {
 					<p className="title">Info</p>
 				</div>
 				<p><span>Status:</span>:<span className={statusColor}>{status}</span></p>
-				<p><span>Time:</span>:<span>{time}ms</span></p>
-				<p><span>URL:</span>:<span>{url}</span></p>
+				<p><span>Time:</span>:<span>{timeToLoad}ms</span></p>
+				<p><span>URL:</span>:<span>{search}</span></p>
 				<p><span>Data Length:</span>:<span>{dataSize}</span></p>
 				<p><span>Data Type:</span>:<span>{contentType.split(';')[0].split('/')[1]}</span></p>
 			</div>

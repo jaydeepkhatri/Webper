@@ -3,6 +3,7 @@ import { useContext } from 'react';
 import { AppContext } from '../../App';
 
 const Error = () => {
+
 	const { search, webdata, timeToLoad } = useContext(AppContext);
 
 	return (

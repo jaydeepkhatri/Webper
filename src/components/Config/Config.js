@@ -3,13 +3,14 @@ import { useContext } from 'react';
 import { AppContext } from '../../App';
 
 const Config = () => {
+
 	const { webdata } = useContext(AppContext);
 
 	let updatedConfigObject = {};
-	let tobeSkip = ['adapter', 'transformRequest', 'transformResponse', 'validateStatus'];
+	let headersTobeSkipped = ['adapter', 'transformRequest', 'transformResponse', 'validateStatus'];
 
 	for (const [key, value] of Object.entries(webdata.config)) {
-		if (!tobeSkip.includes(key)) {
+		if (!headersTobeSkipped.includes(key)) {
 			if (typeof value !== 'object' || Array.isArray(value)) {
 				updatedConfigObject[key] = value + '';
 			} else {

@@ -1,6 +1,11 @@
 import { RiFileCopyLine } from 'react-icons/ri';
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 
 const ResponseHeaders = ({ responseheader }) => {
+
+	const { webdata } = useContext(AppContext);
+
 	return (
 		<>
 			<div className="box">
@@ -12,7 +17,7 @@ const ResponseHeaders = ({ responseheader }) => {
 				</div>
 				<div className="info">
 					{
-						Object.entries(responseheader).map(([key, value]) => (
+						Object.entries(webdata.headers).map(([key, value]) => (
 							<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(value)}><RiFileCopyLine /></button></p>
 						))
 					}
