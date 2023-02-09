@@ -1,12 +1,14 @@
 import { RiFileCopyLine } from 'react-icons/ri';
-import React from 'react';
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 
-const Config = ({ config }) => {
+const Config = () => {
+	const { webdata } = useContext(AppContext);
 
 	let updatedConfigObject = {};
 	let tobeSkip = ['adapter', 'transformRequest', 'transformResponse', 'validateStatus'];
 
-	for (const [key, value] of Object.entries(config)) {
+	for (const [key, value] of Object.entries(webdata.config)) {
 		if (!tobeSkip.includes(key)) {
 			if (typeof value !== 'object' || Array.isArray(value)) {
 				updatedConfigObject[key] = value + '';

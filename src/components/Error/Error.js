@@ -1,6 +1,10 @@
 import { MdOutlineError } from 'react-icons/md';
+import { useContext } from 'react';
+import { AppContext } from '../../App';
 
-const Error = ({ search, err_code, timeToLoad }) => {
+const Error = () => {
+	const { search, webdata, timeToLoad } = useContext(AppContext);
+
 	return (
 		<div className="content error">
 			<div className="box">
@@ -8,7 +12,7 @@ const Error = ({ search, err_code, timeToLoad }) => {
 					<p className="title"><MdOutlineError /> We have a error</p>
 				</div>
 				<p>Couldn&apos;t fetch <em>{search}</em></p><br />
-				<p>Error Code: <strong>{err_code}</strong></p><br />
+				<p>Error Code: <strong>{webdata.code}</strong></p><br />
 				<p>Time: {timeToLoad}ms</p>
 			</div>
 

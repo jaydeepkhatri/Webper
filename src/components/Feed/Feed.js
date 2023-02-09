@@ -1,30 +1,26 @@
 import './feed.scss';
 import { FiSearch } from 'react-icons/fi';
 import { RiFileCopyLine, RiDownloadLine } from 'react-icons/ri';
-import { useState } from 'react';
+import { useContext } from 'react';
 import { Status, ResponseHeaders, Config, Loading, Error } from '../index';
 import axios from 'axios';
+import { AppContext } from '../../App';
 
 
 
 const Search = () => {
-	//const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
-	//const [search, setSearch] = useState('http://localhost:3000/');
-	const [search, setSearch] = useState('https://jethalal-quotes.vercel.app/v1');
-	//const [search, setSearch] = useState('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
-
-	const [webdata, setWebData] = useState({});
-	const [error, setError] = useState(false);
-	const [isLoading, setIsLoading] = useState(false);
-	const [isLoadingComplete, setIsLoadingComplete] = useState(false);
-	const [timeToLoad, setTimeToLoad] = useState(0);
-	const [contentType, setContentType] = useState('');
-
-	const [toShow, setToShow] = useState(0);
-	const [dataSize, setDataSize] = useState(0);
-	const [imageBlob, setImageBlob] = useState(null);
-
-
+	const {
+		search, setSearch,
+		webdata, setWebData,
+		isLoading, setIsLoading,
+		error, setError,
+		isLoadingComplete, setIsLoadingComplete,
+		timeToLoad, setTimeToLoad,
+		contentType, setContentType,
+		toShow, setToShow,
+		dataSize, setDataSize,
+		imageBlob, setImageBlob
+	} = useContext(AppContext);
 
 	let sections = ['data', 'headers', 'config'];
 	let timer = 0;
@@ -33,7 +29,6 @@ const Search = () => {
 		if (search.length !== 0) {
 			setIsLoading(true);
 			if (error) setError(false);
-
 
 			axios({
 				method: 'get',
@@ -53,9 +48,8 @@ const Search = () => {
 					));
 				}
 				console.log(data);
+
 				setWebData(data);
-
-
 				setIsLoadingComplete(true);
 				setDataSize(data.data.length);
 				let date = new Date();
@@ -64,6 +58,7 @@ const Search = () => {
 			})
 				.catch(error => {
 					console.log(error);
+
 					setError(true);
 					setIsLoading(false);
 					setWebData(error);
@@ -101,7 +96,7 @@ const Search = () => {
 					isLoading ? <Loading /> : isLoadingComplete ? (
 						error ?
 							<>
-								<Error search={search} err_code={webdata.code} timeToLoad={timeToLoad} />
+								<Error />
 							</>
 							:
 							<>
@@ -135,7 +130,7 @@ const Search = () => {
 											}
 										</div>
 											: sections[toShow] === 'headers' ? <ResponseHeaders responseheader={webdata.headers} />
-												: sections[toShow] === 'config' ? <Config config={webdata.config} />
+												: sections[toShow] === 'config' ? <Config />
 													: null
 										}
 									</div>
