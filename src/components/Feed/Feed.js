@@ -38,7 +38,7 @@ const Search = () => {
 				},
 
 				// TODO: Fix the arraybuffer issue for images
-				//responseType: 'arraybuffer'
+				// responseType: 'arraybuffer'
 			}).then((data) => {
 				setContentType(data.headers['content-type']);
 
