@@ -39,6 +39,7 @@
     align-items: center;
     justify-content: center;
 
+    .search-dropdown,
     .search-input,
     button {
         height: 48px;
@@ -48,14 +49,21 @@
         border-radius: 0 12px 12px 0;
     }
 
+    .search-dropdown {
+        border-radius: 12px 0 0 12px;
+        border: 1px solid #CCC;
+        border-right: 0;
+    }
+
     .search-input {
         border: 1px solid #CCC;
+        border-radius: 0;
+        border-left: 0;
         border-right: 0;
         width: 100%;
         max-width: 480px;
         font-size: 0.9rem;
         color: #666;
-        border-radius: 12px 0 0 12px;
         padding: 16px 24px;
 
         &:focus,

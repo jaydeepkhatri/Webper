@@ -1,6 +1,6 @@
 import './feed.scss';
 import { FiSearch } from 'react-icons/fi';
-import { RiFileCopyLine, RiDownloadLine } from 'react-icons/ri';
+import { RiFileCopyLine, RiDownloadLine, RiSearchLine } from 'react-icons/ri';
 import { useContext } from 'react';
 import { Status, ResponseHeaders, Config, Loading, Error } from '../index';
 import axios from 'axios';
@@ -19,7 +19,8 @@ const Search = () => {
 		contentType, setContentType,
 		toShow, setToShow,
 		setDataSize,
-		imageBlob, setImageBlob
+		imageBlob, setImageBlob,
+		method, setMethod
 	} = useContext(AppContext);
 
 	let sections = ['data', 'headers', 'config'];
@@ -31,7 +32,7 @@ const Search = () => {
 			if (error) setError(false);
 
 			axios({
-				method: 'get',
+				method: method,
 				url: search,
 				validateStatus: function () {
 					return true;
@@ -74,8 +75,12 @@ const Search = () => {
 			<div className='section'>
 				<div className={`inputcontainer ${isLoadingComplete ? 'searched' : ''}`} >
 					<form method='get' action='/' onSubmit={(e) => { e.preventDefault(); let date = new Date(); timer = date.getTime(); fetchAPI(); }} className='form'>
+						<select className='search-dropdown' onChange={(e) => setMethod(e.target.value)}>
+							<option value="get">GET</option>
+							<option value="post">POST</option>
+						</select>
 						<input type='text' className='search-input' onChange={(e) => { setIsLoadingComplete(false); setSearch(e.target.value); }} value={search} placeholder='Enter URL' />
-						<button type='submit' onClick={() => { let date = new Date(); timer = date.getTime(); fetchAPI(); }}>GET</button>
+						<button type='submit' onClick={() => { let date = new Date(); timer = date.getTime(); fetchAPI(); }}><RiSearchLine /></button>
 					</form>
 				</div>
 
