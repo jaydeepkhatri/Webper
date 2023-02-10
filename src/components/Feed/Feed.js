@@ -15,10 +15,10 @@ const Search = () => {
 		isLoading, setIsLoading,
 		error, setError,
 		isLoadingComplete, setIsLoadingComplete,
-		timeToLoad, setTimeToLoad,
+		setTimeToLoad,
 		contentType, setContentType,
 		toShow, setToShow,
-		dataSize, setDataSize,
+		setDataSize,
 		imageBlob, setImageBlob
 	} = useContext(AppContext);
 
@@ -35,17 +35,17 @@ const Search = () => {
 				url: search,
 				validateStatus: function () {
 					return true;
-				}
-			}).then((data) => {
-				//console.log(data);
+				},
 
+				// TODO: Fix the arraybuffer issue for images
+				//responseType: 'arraybuffer'
+			}).then((data) => {
 				setContentType(data.headers['content-type']);
 
-				if (data.headers['content-type'] === 'image/jpeg' || data.headers['content-type'] === 'image/png') {
-					setImageBlob(btoa(
-						new Uint8Array(data.data).reduce(
-							(data, byte) => data + String.fromCharCode(byte), '')
-					));
+				if (data.headers['content-type'].startsWith('image/')) {
+					let imgBlob = new Blob([data.data], { type: data.headers });
+					let objURL = URL.createObjectURL(imgBlob);
+					setImageBlob(objURL);
 				}
 				console.log(data);
 
@@ -93,7 +93,6 @@ const Search = () => {
 													<>
 														<button key={i} className={`btn ${toShow === i ? 'active' : ''}`} onClick={() => setToShow(i)}>{section}</button>
 													</>
-
 												))
 											}
 										</div>
@@ -121,7 +120,7 @@ const Search = () => {
 										</div>
 										<div className='content__right'>
 											<div className='info'>
-												<Status status={webdata.status} time={timeToLoad} url={search} dataSize={dataSize} contentType={contentType} />
+												<Status />
 											</div>
 										</div>
 									</div>
