@@ -52,7 +52,8 @@ const Search = () => {
 
 				setWebData(data);
 				setIsLoadingComplete(true);
-				setDataSize(data.data.length);
+				setDataSize(JSON.stringify(data.data).length);
+				console.log(JSON.stringify(data.data).length);
 				let date = new Date();
 				setTimeToLoad(date.getTime() - timer);
 				setIsLoading(false);
