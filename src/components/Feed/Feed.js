@@ -53,7 +53,6 @@ const Search = () => {
 				setWebData(data);
 				setIsLoadingComplete(true);
 				setDataSize(JSON.stringify(data.data).length);
-				console.log(JSON.stringify(data.data).length);
 				let date = new Date();
 				setTimeToLoad(date.getTime() - timer);
 				setIsLoading(false);
@@ -75,8 +74,8 @@ const Search = () => {
 		<>
 			<div className='section'>
 				<div className={`inputcontainer ${isLoadingComplete ? 'searched' : ''}`} >
-					<form method='get' action='/' onSubmit={(e) => { e.preventDefault(); let date = new Date(); timer = date.getTime(); fetchAPI(); }} className='form'>
-						<select className='search-dropdown' onChange={(e) => setMethod(e.target.value)}>
+					<form action='/' onSubmit={(e) => { e.preventDefault(); let date = new Date(); timer = date.getTime(); fetchAPI(); }} className='form'>
+						<select className='search-dropdown' value={method} onChange={(e) => { setIsLoadingComplete(false), setMethod(e.target.value); }}>
 							<option value="get">GET</option>
 							<option value="post">POST</option>
 						</select>
@@ -102,31 +101,32 @@ const Search = () => {
 												))
 											}
 										</div>
-									</div>
-									<div className='content container'>
-										<div className='content__left'>
-											{sections[toShow] === 'data' ? <div className='box'>
-												<div className='title__wrapper'>
-													<p className='title'>Data</p>
-													<div className='buttons'>
-														<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
-														<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
+
+										<div className='content'>
+											<div className='content__left'>
+												{sections[toShow] === 'data' ? <div className='box'>
+													<div className='title__wrapper'>
+														<p className='title'>Data</p>
+														<div className='buttons'>
+															<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
+															<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
+														</div>
 													</div>
+													{
+														contentType === 'image/jpeg' ?
+															<img src={imageBlob} alt='' /> :
+															<pre><code>{typeof webdata.data == 'object' ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+													}
 												</div>
-												{
-													contentType === 'image/jpeg' ?
-														<img src={imageBlob} alt='' /> :
-														<pre><code>{typeof webdata.data == 'object' ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+													: sections[toShow] === 'headers' ? <ResponseHeaders />
+														: sections[toShow] === 'config' ? <Config />
+															: null
 												}
 											</div>
-												: sections[toShow] === 'headers' ? <ResponseHeaders />
-													: sections[toShow] === 'config' ? <Config />
-														: null
-											}
-										</div>
-										<div className='content__right'>
-											<div className='info'>
-												<Status />
+											<div className='content__right'>
+												<div className='info'>
+													<Status />
+												</div>
 											</div>
 										</div>
 									</div>

@@ -18,7 +18,7 @@ const ResponseHeaders = ({ responseheader }) => {
 				<div className="info">
 					{
 						Object.entries(webdata.headers).map(([key, value]) => (
-							<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(value)}><RiFileCopyLine /></button></p>
+							<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(`${key} - ${value}`)}><RiFileCopyLine /></button></p>
 						))
 					}
 				</div>
