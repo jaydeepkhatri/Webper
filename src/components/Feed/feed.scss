@@ -137,11 +137,15 @@
 
         span {
             display: inline-block;
-            min-width: 160px;
+            min-width: 140px;
             word-break: break-all
         }
 
         span:nth-child(odd) {
+            color: rgba($black, 0.85)
+        }
+
+        span:nth-child(even) {
             font-weight: 700;
         }
 
@@ -250,7 +254,14 @@
 /*Media Queries*/
 @media (max-width: 992px) {
     .content {
-        @include padding(2.5);
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        .box span {
+            min-width: auto;
+        }
     }
 }
