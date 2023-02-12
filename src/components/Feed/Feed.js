@@ -118,7 +118,7 @@ const Search = () => {
 													{
 														contentType.startsWith('image/') ?
 															<img src={imageBlob} alt='' /> :
-															<pre><code>{JSON.stringify(webdata.data)}</code></pre>
+															<pre><code>{typeof webdata.data === 'object' ? JSON.stringify(webdata.data) : webdata.data}</code></pre>
 													}
 												</div>
 													: sections[toShow] === 'format' ? <FormatCode />
@@ -128,9 +128,7 @@ const Search = () => {
 												}
 											</div>
 											<div className='content__right'>
-												<div className='info'>
-													<Status />
-												</div>
+												<Status />
 											</div>
 										</div>
 									</div>

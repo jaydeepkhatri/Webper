@@ -1,37 +1,26 @@
 import { RiFileCopyLine } from 'react-icons/ri';
 import { useContext } from 'react';
 import { AppContext } from '../../App';
+import { skipKeyObject } from '../../utils/skipKeyObject.js';
 
 const Config = () => {
 
 	const { webdata } = useContext(AppContext);
 
-	let updatedConfigObject = {};
 	let headersTobeSkipped = ['adapter', 'transformRequest', 'transformResponse', 'validateStatus'];
-
-	for (const [key, value] of Object.entries(webdata.config)) {
-		if (!headersTobeSkipped.includes(key)) {
-			if (typeof value !== 'object' || Array.isArray(value)) {
-				updatedConfigObject[key] = value + '';
-			} else {
-				for (const [subKey, subValue] of Object.entries(value)) {
-					updatedConfigObject[subKey] = subValue + '';
-				}
-			}
-		}
-	}
+	let fixObject = skipKeyObject(webdata.config, headersTobeSkipped);
 
 	return (
 		<div className="box">
 			<div className="title__wrapper">
 				<p className="title">Config</p>
 				<div className="buttons">
-					<button onClick={() => navigator.clipboard.writeText(JSON.stringify(updatedConfigObject))}>Copy <RiFileCopyLine /></button>
+					<button onClick={() => navigator.clipboard.writeText(JSON.stringify(fixObject))}>Copy <RiFileCopyLine /></button>
 				</div>
 			</div>
 			<div className="info split">
 				{
-					Object.entries(updatedConfigObject).map(([key, value]) => (
+					Object.entries(fixObject).map(([key, value]) => (
 						<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(`${key} - ${value}`)}><RiFileCopyLine /></button></p>
 					))
 				}

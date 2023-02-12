@@ -1,10 +1,14 @@
 import { RiFileCopyLine } from 'react-icons/ri';
 import { useContext } from 'react';
 import { AppContext } from '../../App';
+import { skipKeyObject } from '../../utils/skipKeyObject.js';
 
-const ResponseHeaders = ({ responseheader }) => {
+const ResponseHeaders = () => {
 
 	const { webdata } = useContext(AppContext);
+
+	let headersTobeSkipped = ['content-length'];
+	let fixObject = skipKeyObject(webdata.headers, headersTobeSkipped);
 
 	return (
 		<>
@@ -12,12 +16,12 @@ const ResponseHeaders = ({ responseheader }) => {
 				<div className="title__wrapper">
 					<p className="title">Headers</p>
 					<div className="buttons">
-						<button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(responseheader))}>Copy <RiFileCopyLine /></button>
+						<button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(fixObject))}>Copy <RiFileCopyLine /></button>
 					</div>
 				</div>
 				<div className="info split">
 					{
-						Object.entries(webdata.headers).map(([key, value]) => (
+						Object.entries(fixObject).map(([key, value]) => (
 							<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(`${key} - ${value}`)}><RiFileCopyLine /></button></p>
 						))
 					}

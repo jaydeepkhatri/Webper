@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import { AppContext } from '../../App';
-import { RiFileCopyLine } from 'react-icons/ri';
+import { RiFileCopyLine, RiDownloadLine } from 'react-icons/ri';
 import Highlight from 'react-highlight';
 import '../../../node_modules/highlight.js/styles/stackoverflow-light.css';
 import './FormatCode.scss';
+import { downloadFile } from '../../utils/downloadFile.js';
 
 const FormatCode = () => {
 	const { webdata, contentType } = useContext(AppContext);
@@ -13,6 +14,7 @@ const FormatCode = () => {
 			<div className="title__wrapper">
 				<p className="title">Format Code</p>
 				<div className="buttons">
+					<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
 					<button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
 				</div>
 			</div>
