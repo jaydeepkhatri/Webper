@@ -1,0 +1,5 @@
+@import '../../vendors/mixins';
+
+.hljs {
+    @include padding(2);
+}

@@ -5,3 +5,4 @@ export { default as Status } from './Status/Status';
 export { default as ResponseHeaders } from './ResponseHeaders/ResponseHeaders';
 export { default as Config } from './Config/Config';
 export { default as Error } from './Error/Error';
+export { default as FormatCode } from './FormatCode/FormatCode';

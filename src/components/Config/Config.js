@@ -29,7 +29,7 @@ const Config = () => {
 					<button onClick={() => navigator.clipboard.writeText(JSON.stringify(updatedConfigObject))}>Copy <RiFileCopyLine /></button>
 				</div>
 			</div>
-			<div className="info">
+			<div className="info split">
 				{
 					Object.entries(updatedConfigObject).map(([key, value]) => (
 						<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(`${key} - ${value}`)}><RiFileCopyLine /></button></p>

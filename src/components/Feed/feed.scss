@@ -135,19 +135,23 @@
             gap: 4px;
         }
 
-        span {
-            display: inline-block;
-            min-width: 140px;
-            word-break: break-all
+        .split {
+            span {
+                display: inline-block;
+                min-width: 140px;
+                word-break: break-all
+            }
+
+            span:nth-child(odd) {
+                color: rgba($black, 0.85)
+            }
+
+            span:nth-child(even) {
+                font-weight: 700;
+            }
         }
 
-        span:nth-child(odd) {
-            color: rgba($black, 0.85)
-        }
 
-        span:nth-child(even) {
-            font-weight: 700;
-        }
 
         pre,
         em {

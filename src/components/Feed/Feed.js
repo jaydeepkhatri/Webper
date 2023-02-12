@@ -1,8 +1,8 @@
 import './feed.scss';
 import { FiSearch } from 'react-icons/fi';
 import { RiFileCopyLine, RiDownloadLine, RiSearchLine } from 'react-icons/ri';
-import { useContext } from 'react';
-import { Status, ResponseHeaders, Config, Loading, Error } from '../index';
+import { useContext, useState } from 'react';
+import { Status, ResponseHeaders, Config, Loading, Error, FormatCode } from '../index';
 import axios from 'axios';
 import { AppContext } from '../../App';
 import { downloadFile } from '../../utils/downloadFile.js';
@@ -23,7 +23,7 @@ const Search = () => {
 		method, setMethod
 	} = useContext(AppContext);
 
-	let sections = ['data', 'headers', 'config'];
+	const [sections, setSections] = useState([]);
 	let timer = 0;
 
 	const fetchAPI = () => {
@@ -42,12 +42,15 @@ const Search = () => {
 				// responseType: 'arraybuffer'
 			}).then((data) => {
 				setContentType(data.headers['content-type']);
+				setSections(['data', 'format', 'headers', 'config']);
 
 				if (data.headers['content-type'].startsWith('image/')) {
 					let imgBlob = new Blob([data.data], { type: data.headers });
 					let objURL = URL.createObjectURL(imgBlob);
 					setImageBlob(objURL);
+					setSections(['data', 'headers', 'config']);
 				}
+
 				console.log(data);
 
 				setWebData(data);
@@ -106,21 +109,22 @@ const Search = () => {
 											<div className='content__left'>
 												{sections[toShow] === 'data' ? <div className='box'>
 													<div className='title__wrapper'>
-														<p className='title'>Data</p>
+														<p className='title'>Data (raw)</p>
 														<div className='buttons'>
 															<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
 															<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
 														</div>
 													</div>
 													{
-														contentType === 'image/jpeg' ?
+														contentType.startsWith('image/') ?
 															<img src={imageBlob} alt='' /> :
-															<pre><code>{typeof webdata.data == 'object' ? JSON.stringify(webdata.data, null, 2) : webdata.data}</code></pre>
+															<pre><code>{JSON.stringify(webdata.data)}</code></pre>
 													}
 												</div>
-													: sections[toShow] === 'headers' ? <ResponseHeaders />
-														: sections[toShow] === 'config' ? <Config />
-															: null
+													: sections[toShow] === 'format' ? <FormatCode />
+														: sections[toShow] === 'headers' ? <ResponseHeaders />
+															: sections[toShow] === 'config' ? <Config />
+																: null
 												}
 											</div>
 											<div className='content__right'>

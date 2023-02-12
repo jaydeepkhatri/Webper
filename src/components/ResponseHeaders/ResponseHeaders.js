@@ -15,7 +15,7 @@ const ResponseHeaders = ({ responseheader }) => {
 						<button className="copy-btn" onClick={() => navigator.clipboard.writeText(JSON.stringify(responseheader))}>Copy <RiFileCopyLine /></button>
 					</div>
 				</div>
-				<div className="info">
+				<div className="info split">
 					{
 						Object.entries(webdata.headers).map(([key, value]) => (
 							<p key={key}><span>{key}</span>: <span>{value}</span><button onClick={() => navigator.clipboard.writeText(`${key} - ${value}`)}><RiFileCopyLine /></button></p>
