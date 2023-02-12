@@ -74,7 +74,7 @@ const Search = () => {
 		<>
 			<div className='section'>
 				<div className={`inputcontainer ${isLoadingComplete ? 'searched' : ''}`} >
-					<form action='/' onSubmit={(e) => { e.preventDefault(); let date = new Date(); timer = date.getTime(); fetchAPI(); }} className='form'>
+					<form action='/' onSubmit={(e) => { e.preventDefault(); }} className='form'>
 						<select className='search-dropdown' value={method} onChange={(e) => { setIsLoadingComplete(false), setMethod(e.target.value); }}>
 							<option value="get">GET</option>
 							<option value="post">POST</option>
