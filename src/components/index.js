@@ -6,3 +6,4 @@ export { default as ResponseHeaders } from './ResponseHeaders/ResponseHeaders';
 export { default as Config } from './Config/Config';
 export { default as Error } from './Error/Error';
 export { default as FormatCode } from './FormatCode/FormatCode';
+export { default as Notification } from './Notification/Notification';

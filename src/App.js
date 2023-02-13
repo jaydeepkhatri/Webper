@@ -5,9 +5,9 @@ import { useState, createContext } from 'react';
 export const AppContext = createContext(null);
 
 function App() {
-	const [search, setSearch] = useState('https://jethalal-quotes.vercel.app/v1');
+	//const [search, setSearch] = useState('https://jethalal-quotes.vercel.app/v1');
 	//const [search, setSearch] = useState('https://jsonplaceholder.typicode.com/todos?_limit=4');
-	//const [search, setSearch] = useState('http://localhost:3000/');
+	const [search, setSearch] = useState('http://localhost:3000/');
 	//const [search, setSearch] = useState('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80');
 
 	const [webdata, setWebData] = useState({});
@@ -20,6 +20,7 @@ function App() {
 	const [toShow, setToShow] = useState(0);
 	const [dataSize, setDataSize] = useState(0);
 	const [imageBlob, setImageBlob] = useState(null);
+	const [showNotification, setShowNotification] = useState(false);
 
 	const [method, setMethod] = useState('get');
 
@@ -36,7 +37,8 @@ function App() {
 				toShow, setToShow,
 				dataSize, setDataSize,
 				imageBlob, setImageBlob,
-				method, setMethod
+				method, setMethod,
+				showNotification, setShowNotification
 			}}>
 				<Header />
 				<Feed />

@@ -2,7 +2,7 @@ import './feed.scss';
 import { FiSearch } from 'react-icons/fi';
 import { RiFileCopyLine, RiDownloadLine, RiSearchLine } from 'react-icons/ri';
 import { useContext, useState } from 'react';
-import { Status, ResponseHeaders, Config, Loading, Error, FormatCode } from '../index';
+import { Status, ResponseHeaders, Config, Loading, Error, FormatCode, Notification } from '../index';
 import axios from 'axios';
 import { AppContext } from '../../App';
 import { downloadFile } from '../../utils/downloadFile.js';
@@ -20,7 +20,8 @@ const Search = () => {
 		toShow, setToShow,
 		setDataSize,
 		imageBlob, setImageBlob,
-		method, setMethod
+		method, setMethod,
+		setShowNotification
 	} = useContext(AppContext);
 
 	const [sections, setSections] = useState([]);
@@ -112,7 +113,7 @@ const Search = () => {
 														<p className='title'>Data (raw)</p>
 														<div className='buttons'>
 															<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
-															<button onClick={() => navigator.clipboard.writeText(JSON.stringify(webdata.data))}>Copy <RiFileCopyLine /></button>
+															<button onClick={() => { navigator.clipboard.writeText(typeof webdata.data === 'object' ? JSON.stringify(webdata.data) : webdata.data); setShowNotification(true); }}>Copy <RiFileCopyLine /></button>
 														</div>
 													</div>
 													{
@@ -129,6 +130,7 @@ const Search = () => {
 											</div>
 											<div className='content__right'>
 												<Status />
+												<Notification />
 											</div>
 										</div>
 									</div>
