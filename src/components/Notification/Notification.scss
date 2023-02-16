@@ -4,7 +4,7 @@
     position: absolute;
     display: flex;
     align-items: center;
-    left: 20px;
+    left: -200px;
     bottom: 20px;
     @include padding(2);
     border: 1px solid #ddd;
@@ -17,6 +17,7 @@
 }
 
 .notification.active {
+    left: 20px;
     opacity: 1;
     pointer-events: all;
 }

@@ -96,16 +96,13 @@ const Search = () => {
 								:
 								<>
 									<div className='container'>
-										<div className='show__button_group'>
+										<div className='show__button_group' key={'ASd'}>
 											{
 												sections.map((section, i) => (
-													<>
-														<button key={i} className={`btn ${toShow === i ? 'active' : ''}`} onClick={() => setToShow(i)}>{section}</button>
-													</>
+													<button key={i} className={`btn ${toShow === i ? 'active' : ''}`} onClick={() => setToShow(i)}>{section}</button>
 												))
 											}
 										</div>
-
 										<div className='content'>
 											<div className='content__left'>
 												{sections[toShow] === 'data' ? <div className='box'>
@@ -119,7 +116,15 @@ const Search = () => {
 													{
 														contentType.startsWith('image/') ?
 															<img src={imageBlob} alt='' /> :
-															<pre><code>{typeof webdata.data === 'object' ? JSON.stringify(webdata.data) : webdata.data}</code></pre>
+															<pre>
+																<code>
+																	{
+																		typeof webdata.data === 'object'
+																			? JSON.stringify(webdata.data)
+																			: webdata.data
+																	}
+																</code>
+															</pre>
 													}
 												</div>
 													: sections[toShow] === 'format' ? <FormatCode />
