@@ -21,7 +21,8 @@ const Search = () => {
 		setDataSize,
 		imageBlob, setImageBlob,
 		method, setMethod,
-		setShowNotification
+		setShowNotification,
+		deCodeText
 	} = useContext(AppContext);
 
 	const [sections, setSections] = useState([]);
@@ -40,7 +41,7 @@ const Search = () => {
 				},
 
 				// TODO: Fix the arraybuffer issue for images
-				// responseType: 'arraybuffer'
+				responseType: 'arraybuffer'
 			}).then((data) => {
 				setContentType(data.headers['content-type']);
 				setSections(['data', 'format', 'headers', 'config']);
@@ -109,8 +110,8 @@ const Search = () => {
 													<div className='title__wrapper'>
 														<p className='title'>Data (raw)</p>
 														<div className='buttons'>
-															<button onClick={() => { downloadFile(webdata.data, contentType); }} >Download <RiDownloadLine /></button>
-															<button onClick={() => { navigator.clipboard.writeText(typeof webdata.data === 'object' ? JSON.stringify(webdata.data) : webdata.data); setShowNotification(true); }}>Copy <RiFileCopyLine /></button>
+															<button onClick={() => { downloadFile(deCodeText(webdata.data), contentType); }} >Download <RiDownloadLine /></button>
+															<button onClick={() => { navigator.clipboard.writeText(typeof deCodeText(webdata.data) === 'object' ? JSON.stringify(deCodeText(webdata.data)) : deCodeText(webdata.data)); setShowNotification(true); }}>Copy <RiFileCopyLine /></button>
 														</div>
 													</div>
 													{
@@ -119,9 +120,9 @@ const Search = () => {
 															<pre>
 																<code>
 																	{
-																		typeof webdata.data === 'object'
-																			? JSON.stringify(webdata.data)
-																			: webdata.data
+																		typeof deCodeText(webdata.data) === 'object'
+																			? JSON.stringify(deCodeText(webdata.data))
+																			: deCodeText(webdata.data)
 																	}
 																</code>
 															</pre>
