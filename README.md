@@ -20,11 +20,15 @@
 ```sh
 git clone https://github.com/jaydeepkhatri/Webper.git
 ```
-2. Install NPM packages
+2. Change folder
+```sh
+cd Webper
+```
+3. Install NPM packages
 ```sh
 npm install
 ```
-3. Start the server
+4. Start the server
 ```sh
 npm start
 ```
