@@ -26,7 +26,7 @@ function App() {
 
 	const deCodeText = (string) => {
 		let enc = new TextDecoder('utf-8');
-		return enc.decode(string);
+		return JSON.parse(enc.decode(string));
 	};
 
 	return (
