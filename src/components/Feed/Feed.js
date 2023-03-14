@@ -53,7 +53,7 @@ const Search = () => {
 					setSections(['data', 'headers', 'config']);
 				}
 
-				console.log(data);
+				// console.log(data);
 
 				setWebData(data);
 				setIsLoadingComplete(true);
